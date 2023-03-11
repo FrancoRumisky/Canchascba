@@ -22,6 +22,7 @@ server.use(
   cors({
     origin: [
       "http://localhost:19006",
+      "https://canchascba-production.up.railway.app/",
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"],
