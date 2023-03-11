@@ -13,7 +13,10 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      suelo: {
+      tamaño: {
+        type: DataTypes.STRING,
+      },
+      cubierta: {
         type: DataTypes.STRING,
       },
       precioPorHora: {

@@ -1,0 +1,37 @@
+[
+  {
+    "nombre": "Franco",
+    "apellido": "Rumisky",
+    "password": "1234",
+    "telefono": 3513223355,
+    "email": "framqoo@gmail.com"
+  },
+  {
+    "nombre": "Franco",
+    "apellido": "Romero",
+    "password": "1234",
+    "telefono": 3512334411,
+    "email": "fran.nico@gmail.com"
+  },
+  {
+    "nombre": "Pepe",
+    "apellido": "pepo",
+    "password": "1234",
+    "telefono": 3512324567,
+    "email": "elpepo@gmail.com"
+  },
+  {
+    "nombre": "harry",
+    "apellido": "potter",
+    "password": "1234",
+    "telefono": 351123456,
+    "email": "harrielsucio@gmail.com"
+  },
+  {
+    "nombre": "jaime",
+    "apellido": "jaimito",
+    "password": "1234",
+    "telefono": 3513223451,
+    "email": "jaimito@gmail.com"
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "nombre": "Empresa 1",
+    "direccion": "direccion 1",
+    "horarios": ["11", "02"]
+  },
+  {
+    "nombre": "Empresa 2",
+    "direccion": "direccion 2",
+    "horarios": ["18", "02"]
+  },
+  {
+    "nombre": "Empresa 3",
+    "direccion": "direccion 3",
+    "horarios": ["09", "13","17", "00"]
+  }
+]

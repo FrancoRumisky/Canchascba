@@ -1,0 +1,50 @@
+[
+  {
+    "DeporteId": "1",
+    "CanchaId": "1"
+  },
+  {
+    "DeporteId": "1",
+    "CanchaId": "2"
+  },
+  {
+    "DeporteId": "1",
+    "CanchaId": "3"
+  },
+  {
+    "DeporteId": "1",
+    "CanchaId": "4"
+  },
+  {
+    "DeporteId": "1",
+    "CanchaId": "5"
+  },
+  {
+    "DeporteId": "1",
+    "CanchaId": "6"
+  },
+  {
+    "DeporteId": "6",
+    "CanchaId": "7"
+  },
+  {
+    "DeporteId": "6",
+    "CanchaId": "8"
+  },
+  {
+    "DeporteId": "1",
+    "CanchaId": "9"
+  },
+  {
+    "DeporteId": "6",
+    "CanchaId": "10"
+  },
+  {
+    "DeporteId": "2",
+    "CanchaId": "11"
+  },
+  {
+    "DeporteId": "4",
+    "CanchaId": "12"
+  }
+]

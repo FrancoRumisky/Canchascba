@@ -1,0 +1,74 @@
+[
+  {
+    "tipo": "tierra",
+    "tamaño": "futbol 5",
+    "cubierta": "techada",
+    "precioPorHora": "4000"
+  },
+  {
+    "tipo": "cesped natural",
+    "tamaño": "futbol 6",
+    "cubierta": "descubierta",
+    "precioPorHora": "5500"
+  },
+  {
+    "tipo": "cesped artificial",
+    "tamaño": "futbol 7",
+    "cubierta": "techada",
+    "precioPorHora": "6000"
+  },
+  {
+    "tipo": "cesped artificial",
+    "tamaño": "futbol 8",
+    "cubierta": "descubierta",
+    "precioPorHora": "6500"
+  },
+  {
+    "tipo": "cesped artificial",
+    "tamaño": "futbol 9",
+    "cubierta": "descubierta",
+    "precioPorHora": "7500"
+  },
+  {
+    "tipo": "cesped natural",
+    "tamaño": "futbol 11",
+    "cubierta": "descubierta",
+    "precioPorHora": "10000"
+  },
+  {
+    "tipo": "Resina sintética",
+    "tamaño": "",
+    "cubierta": "descubierta",
+    "precioPorHora": "7000"
+  },
+  {
+    "tipo": "Cemento",
+    "tamaño": "",
+    "cubierta": "descubierta",
+    "precioPorHora": "5000"
+  },
+  {
+    "tipo": "Cemento",
+    "tamaño": "futbol 5",
+    "cubierta": "techada",
+    "precioPorHora": "5000"
+  },
+  {
+    "tipo": "Hormigón poroso",
+    "tamaño": "",
+    "cubierta": "descubierta",
+    "precioPorHora": "8000"
+  },
+  {
+    "tipo": "madera",
+    "tamaño": "",
+    "cubierta": "techada",
+    "precioPorHora": "10000"
+  },
+  {
+    "tipo": "tierra batida",
+    "tamaño": "",
+    "cubierta": "descubierta",
+    "precioPorHora": "15000"
+  }
+]

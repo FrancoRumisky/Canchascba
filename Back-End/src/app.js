@@ -21,7 +21,7 @@ server.use(bodyParser.urlencoded({ extended: true }));
 server.use(
   cors({
     origin: [
-      "http://localhost:3000",
+      "http://localhost:19006",
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"],

@@ -1,0 +1,11 @@
+[
+  { "EmpresaId": "1", "DeporteId": "1" },
+  { "EmpresaId": "1", "DeporteId": "2" },
+  { "EmpresaId": "1", "DeporteId": "3" },
+  { "EmpresaId": "2", "DeporteId": "1" },
+  { "EmpresaId": "2", "DeporteId": "3" },
+  { "EmpresaId": "2", "DeporteId": "4" },
+  { "EmpresaId": "3", "DeporteId": "5" },
+  { "EmpresaId": "3", "DeporteId": "6" },
+  { "EmpresaId": "3", "DeporteId": "1" }
+]
