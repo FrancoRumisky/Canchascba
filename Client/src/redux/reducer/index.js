@@ -12,6 +12,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         users: action.payload,
       };
+      case GET_SPORTS:
+      return {
+        ...state,
+        sports: action.payload,
+      };
     default:
       return state;
   }
