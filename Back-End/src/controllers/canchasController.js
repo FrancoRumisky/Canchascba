@@ -1,9 +1,11 @@
 const { Canchas, Empresa, Deportes } = require("../db");
 
 const findQuery = {
-  include: [{ model: Empresa }, { model: Deportes, through: {attributes: []} }],
+  include: [
+    { model: Empresa },
+    { model: Deportes, through: { attributes: [] } },
+  ],
   attributes: { exclude: ["EmpresaId"] },
-  
 };
 
 const findById = async (id) => {
