@@ -1,8 +1,10 @@
-import { GET_SPORTS, GET_USERS } from "../constants";
+import { GET_SPORTS, GET_USERS, GET_USER, GET_SPORT } from "../constants";
 
 const initialState = {
-  users: [],
-  sports: [],
+  allusers: [],
+  user:{},
+  allSports: [],
+  sport:{},
 };
 
 const reducer = (state = initialState, action) => {
@@ -10,13 +12,23 @@ const reducer = (state = initialState, action) => {
     case GET_USERS:
       return {
         ...state,
-        users: action.payload,
+        allusers: action.payload,
       };
+      case GET_USER:
+        return {
+          ...state,
+          user:action.payload,
+        };
       case GET_SPORTS:
       return {
         ...state,
-        sports: action.payload,
+        allSports: action.payload,
       };
+      case GET_SPORT:
+        return {
+          ...state,
+          sport: action.payload,
+        }
     default:
       return state;
   }

@@ -1,0 +1,142 @@
+[
+  {
+    "HoraId": "1",
+    "CanchaId": "1"
+  },
+  {
+    "HoraId": "2",
+    "CanchaId": "1"
+  },
+  {
+    "HoraId": "3",
+    "CanchaId": "1"
+  },
+  {
+    "HoraId": "4",
+    "CanchaId": "1"
+  },
+  {
+    "HoraId": "1",
+    "CanchaId": "2"
+  },
+  {
+    "HoraId": "2",
+    "CanchaId": "2"
+  },
+  {
+    "HoraId": "3",
+    "CanchaId": "2"
+  },
+  {
+    "HoraId": "4",
+    "CanchaId": "2"
+  },
+  {
+    "HoraId": "1",
+    "CanchaId": "3"
+  },
+  {
+    "HoraId": "2",
+    "CanchaId": "3"
+  },
+  {
+    "HoraId": "3",
+    "CanchaId": "3"
+  },
+  {
+    "HoraId": "4",
+    "CanchaId": "3"
+  },
+  {
+    "HoraId": "5",
+    "CanchaId": "3"
+  },
+  {
+    "HoraId": "1",
+    "CanchaId": "4"
+  },
+  {
+    "HoraId": "6",
+    "CanchaId": "4"
+  },
+  {
+    "HoraId": "7",
+    "CanchaId": "4"
+  },
+  {
+    "HoraId": "3",
+    "CanchaId": "5"
+  },
+  {
+    "HoraId": "1",
+    "CanchaId": "5"
+  },
+  {
+    "HoraId": "10",
+    "CanchaId": "5"
+  },
+  {
+    "HoraId": "12",
+    "CanchaId": "5"
+  },
+  {
+    "HoraId": "1",
+    "CanchaId": "6"
+  },
+  {
+    "HoraId": "9",
+    "CanchaId": "6"
+  },
+  {
+    "HoraId": "10",
+    "CanchaId": "6"
+  },
+  {
+    "HoraId": "5",
+    "CanchaId": "6"
+  },
+  {
+    "HoraId": "1",
+    "CanchaId": "7"
+  },
+  {
+    "HoraId": "2",
+    "CanchaId": "8"
+  },
+  {
+    "HoraId": "1",
+    "CanchaId": "8"
+  },
+  {
+    "HoraId": "1",
+    "CanchaId": "9"
+  },
+  {
+    "HoraId": "1",
+    "CanchaId": "10"
+  },
+  {
+    "HoraId": "10",
+    "CanchaId": "10"
+  },
+  {
+    "HoraId": "14",
+    "CanchaId": "11"
+  },
+  {
+    "HoraId": "3",
+    "CanchaId": "11"
+  },
+  {
+    "HoraId": "5",
+    "CanchaId": "11"
+  },
+  {
+    "HoraId": "10",
+    "CanchaId": "12"
+  },
+  {
+    "HoraId": "14",
+    "CanchaId": "12"
+  }
+]

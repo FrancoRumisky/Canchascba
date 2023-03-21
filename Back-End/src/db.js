@@ -44,6 +44,7 @@ const {
   Deportes,
   Servicios,
   Reservas,
+  Horas
 } = sequelize.models;
 
 RolUsuarios.hasMany(Usuarios);
@@ -63,6 +64,9 @@ Reservas.belongsTo(Canchas);
 
 Deportes.belongsToMany(Canchas, {through:"DeporteXCancha"});
 Canchas.belongsToMany(Deportes, {through:"DeporteXCancha"});
+
+Horas.belongsToMany(Canchas, {through:"HorasXCancha"});
+Canchas.belongsToMany(Horas, {through:"HorasXCancha"});
 
 
 

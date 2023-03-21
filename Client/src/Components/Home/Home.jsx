@@ -1,21 +1,24 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IconButton } from "@react-native-material/core";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, ImageBackground } from "react-native";
 import { useIsFocused } from "@react-navigation/native";
 import { getSports } from "../../redux/actions";
 import Icon from "@expo/vector-icons/MaterialIcons";
+import {Colors} from "../Styles/Colors"
 
 const Home = ({ navigation }) => {
   const dispatch = useDispatch();
-  const sports = useSelector((state) => state.sports);
+  const sports = useSelector((state) => state.allSports);
   const isFocused = useIsFocused();
+
+  console.log(sports)
 
   useEffect(() => {
     if (isFocused) {
       dispatch(getSports());
     }
-  }, [sports, isFocused]);
+  }, [ isFocused]);
 
   const setImg = (name) => {
     switch (name) {
@@ -59,10 +62,12 @@ const Home = ({ navigation }) => {
           <View key={e.id} style={{ alignItems: "center" }}>
             
             <Text style={{}}>{e.nombre}</Text>
-            
+            <ImageBackground source={{
+                  uri: "https://static.vecteezy.com/system/resources/previews/002/082/394/original/abstract-header-with-red-and-black-layers-above-each-other-modern-design-banner-for-your-business-illustration-with-oblique-stripes-and-lines-vector.jpg",
+                }} resizeMode="cover" style={styles.image}>
             <IconButton
               style={styles.iconButtonSports}
-              color="black"
+              color="white"
               icon={(props) => (
                 <Icon
                   name={setImg(e.nombre)}
@@ -71,14 +76,14 @@ const Home = ({ navigation }) => {
                 />
               )}
             />
-        
+        </ImageBackground>
           </View>
         ))}
       </View>
       <Button
         title="Home1"
         onPress={() => {
-          navigation.navigate("Home1");
+          navigation.navigate("Canchas");
         }}
       />
     </View>
@@ -92,14 +97,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  image:{
+    margin: 10,
+  },
   iconButtonSports: {
-    width: 150,
-    height: 150,
-    backgroundColor: "white",
+    width: 130,
+    height: 130,
+    backgroundColor: "transparent",
     
     borderRadius: 0,
-    margin: 10,
-    shadowColor: "#ddd",
+    // margin: 10,
+    shadowColor: "black",
     shadowOffset: {
       width: 0,
       height: 2,
@@ -107,7 +115,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.85,
     shadowRadius: 3.84,
 
-    elevation: 5,
+    elevation: 4,
   },
 
 });

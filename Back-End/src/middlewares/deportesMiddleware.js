@@ -10,7 +10,7 @@ router.get("/", async (req, res) => {
 
     return res.status(200).json(sports);
   } catch (err) {
-    console.error("GET /users SportsController.findAllSports error");
+    console.error("GET /deportes SportsController.findAllSports error");
   }
 });
 
@@ -26,7 +26,7 @@ router.get("/:id", async (req, res, next) => {
 
     return res.status(200).json(user);
   } catch (error) {
-    console.error("GET /users/:id SportsController.findById error");
+    console.error("GET /deportes/:id SportsController.findById error");
     next(error);
   }
 });

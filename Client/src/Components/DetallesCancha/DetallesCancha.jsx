@@ -1,17 +1,12 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Button} from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
-const Home1 = ({ navigation }) => {
+const DetallesCancha = () => {
   return (
     <View style={styles.container}>
-      <Button
-        title="Home3"
-        onPress={() => {
-          navigation.navigate("Home3");
-        }}
-      />
-      <Text>Rumisky</Text>
+
+      <Text>qeloke</Text>
       <StatusBar style="auto" />
     </View>
   );
@@ -26,4 +21,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Home1;
+export default DetallesCancha;

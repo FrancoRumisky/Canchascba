@@ -7,13 +7,12 @@ import { Image, View, Text } from "react-native";
 import { Provider } from "react-redux";
 import configureStore from "./src/redux/store";
 // Imports Components
-import Home from "./src/Components/Home/Home";
-import Home1 from "./src/Components/Home1/Home1";
-import Home3 from "./src/Components/Home3/Home3";
 import StackNavigator from "./src/Components/StackNavigator/StackNavigator";
+import Contacto from "./src/Components/Contacto/Contacto";
+import Perfil from "./src/Components/Perfil/Perfil";
 //import Icons
 import Ionicons from "@expo/vector-icons/Ionicons";
-
+//import Styles
 import { Colors } from "./src/Components/Styles/Colors";
 
 const Stack = createStackNavigator();
@@ -38,7 +37,7 @@ export default function App() {
             tabBarIcon: ({ focused, color, size }) => {
               let iconName;
 
-              if (route.name === "Home") {
+              if (route.name === "Inicio") {
                 iconName = focused ? "ios-home" : "ios-home-outline";
               } else if (route.name === "Perfil") {
                 iconName = focused ? "ios-person" : "ios-person-outline";
@@ -72,9 +71,9 @@ export default function App() {
             
           })}
         >
-          <Tab.Screen name="Home" component={StackNavigator} />
-          <Tab.Screen name="Perfil" component={Home1} />
-          <Tab.Screen name="Contacto" component={Home3} />
+          <Tab.Screen name="Inicio" component={StackNavigator} />
+          <Tab.Screen name="Perfil" component={Perfil} />
+          <Tab.Screen name="Contacto" component={Contacto} />
         </Tab.Navigator>
       </NavigationContainer>
     </Provider>
