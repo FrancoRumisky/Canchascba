@@ -1,20 +1,26 @@
 [
     {
-      "nombre": "Futbol"
+      "nombre": "Futbol",
+      "img":"sports-soccer"
     },
     {
-      "nombre": "Basquet"
+      "nombre": "Basquet",
+      "img":"sports-basketball"
     },
     {
-      "nombre": "Voley"
+      "nombre": "Voley",
+      "img":"sports-volleyball"
     },
     {
-      "nombre": "Tenis"
+      "nombre": "Tenis",
+      "img":"sports-tennis"
     },
     {
-      "nombre": "Hockey"
+      "nombre": "Hockey",
+      "img":"sports-hockey"
     },
     {
-      "nombre": "Paddle"
+      "nombre": "Paddle",
+      "img":"sports-tennis"
     }
   ]

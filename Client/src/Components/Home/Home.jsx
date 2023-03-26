@@ -1,23 +1,24 @@
+//Imports React
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import * as Location from "expo-location";
 import { IconButton } from "@react-native-material/core";
-import { StyleSheet, Text, View, Button, ImageBackground } from "react-native";
+import { StyleSheet, Text, View, ImageBackground } from "react-native";
 import { useIsFocused } from "@react-navigation/native";
-import { getSports, getCompaniesBySport } from "../../redux/actions";
+//imports Expo
+import * as Location from "expo-location";
 import Icon from "@expo/vector-icons/MaterialIcons";
-import { Colors } from "../Styles/Colors";
+//imports Redux
+import { getSports, getCompaniesBySport } from "../../redux/actions";
 
 const Home = ({ navigation }) => {
   const dispatch = useDispatch();
-  const sports = useSelector((state) => state.allSports);
   const isFocused = useIsFocused();
-  const companiesBySport = useSelector((state) => state.companiesBySport);
+  const sports = useSelector((state) => state.allSports);
+
   const [origin, setOrigin] = useState({
     latitud: "",
     longitud: "",
   });
-
 
   async function getLocationPermission() {
     let { status } = await Location.requestForegroundPermissionsAsync();
@@ -42,25 +43,6 @@ const Home = ({ navigation }) => {
       dispatch(getSports());
     }
   }, [dispatch, isFocused]);
-
-  const setImg = (name) => {
-    switch (name) {
-      case "Futbol":
-        return "sports-soccer";
-      case "Basquet":
-        return "sports-basketball";
-      case "voley":
-        return "sports-volleyball";
-      case "tenis":
-        return "sports-tennis";
-      case "hockey":
-        return "sports-hockey";
-      case "paddle":
-        return "sports-tennis";
-      default:
-        return "";
-    }
-  };
 
   const handleClick = (id) => {
     dispatch(getCompaniesBySport(id));
@@ -102,11 +84,7 @@ const Home = ({ navigation }) => {
                   onPress={() => handleClick(e.id)}
                   color="white"
                   icon={(props) => (
-                    <Icon
-                      name={setImg(e.nombre)}
-                      style={{ fontSize: 90 }}
-                      {...props}
-                    />
+                    <Icon name={e.img} style={{ fontSize: 90 }} {...props} />
                   )}
                 />
               </ImageBackground>
