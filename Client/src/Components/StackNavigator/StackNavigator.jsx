@@ -3,8 +3,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Image,View,Text } from "react-native";
 // Imports Components
 import Home from "../Home/Home";
-import Canchas from "../Canchas/Canchas";
-import DetallesCancha from "../DetallesCancha/DetallesCancha";
+import EmpresasXDeporte from "../EmpresasXDeporte/EmpresasXDeporte";
+import CanchasXEmpresaYDeporte from "../CanchasXEmpres&Deporte/CanchasXEmpresa&Deporte";
+import Map from "../Map/Map";
 
 const Stack = createStackNavigator();
 
@@ -17,8 +18,9 @@ export default function StackNavigator() {
           }}
         >
           <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Canchas" component={Canchas} />
-          <Stack.Screen name="Detalles" component={DetallesCancha} />
+          <Stack.Screen name="EmpresasXDeporte" component={EmpresasXDeporte} />
+          <Stack.Screen name="CanchasXEYD" component={CanchasXEmpresaYDeporte} />
+          <Stack.Screen name="Map" component={Map} />
         </Stack.Navigator>
         )
         }

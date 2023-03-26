@@ -4,13 +4,34 @@ const FieldsController = require("../controllers/canchasController");
 const router = Router();
 
 router.get("/", async (req, res) => {
-  try {
-    const fields = await FieldsController.findAllFields();
-    if (fields.length < 0) return res.status(404).json({ error: "Not found" });
+  const { idcompany, idsport } = req.query;
 
-    return res.status(200).json(fields);
-  } catch (err) {
-    console.error("GET /canchas FieldsController.findAllFields error");
+  if (idcompany && idsport) {
+    try {
+      const fieldsxcompany = await FieldsController.findFieldsXCompanyAndSport(
+        idcompany, idsport
+      );
+
+      if (!fieldsxcompany.length)
+        return res.status(404).json({ error: "Not found" });
+
+      return res.status(200).json(fieldsxcompany);
+    } catch (error) {
+      console.error(
+        "GET /canchas FieldsController.findFieldsXCompanyAndSport error"
+      );
+      next(error);
+    }
+  } else {
+    try {
+      const fields = await FieldsController.findAllFields();
+      if (fields.length < 0)
+        return res.status(404).json({ error: "Not found" });
+
+      return res.status(200).json(fields);
+    } catch (err) {
+      console.error("GET /canchas FieldsController.findAllFields error");
+    }
   }
 });
 

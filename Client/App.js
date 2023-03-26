@@ -1,6 +1,5 @@
 // Imports React Native
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Image, View, Text } from "react-native";
 // Imports Redux
@@ -15,7 +14,6 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 //import Styles
 import { Colors } from "./src/Components/Styles/Colors";
 
-const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const store = configureStore();
 

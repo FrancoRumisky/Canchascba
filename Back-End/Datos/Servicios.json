@@ -1,0 +1,23 @@
+[
+  {
+    "estacionamiento": true,
+    "parrilla": true,
+    "bar": true,
+    "duchas": true,
+    "otros": "Salon"
+  },
+  {
+    "estacionamiento": false,
+    "parrilla": true,
+    "bar": false,
+    "duchas": false,
+    "otros": ""
+  },
+  {
+    "estacionamiento": false,
+    "parrilla": true,
+    "bar": true,
+    "duchas": true,
+    "otros": ""
+  }
+]

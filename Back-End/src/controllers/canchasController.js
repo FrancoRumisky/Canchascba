@@ -26,4 +26,18 @@ const findAllFields = async () => {
   }
 };
 
-module.exports = { findById, findAllFields };
+const findFieldsXCompanyAndSport = async (idcompany, idsport) => {
+  try {
+    return await Canchas.findAll({
+      where: {EmpresaId: idcompany},
+      include:[{model: Deportes, where:{id:idsport}, through: { attributes: [] } }]
+    });
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
+
+
+module.exports = { findById, findAllFields, findFieldsXCompanyAndSport };

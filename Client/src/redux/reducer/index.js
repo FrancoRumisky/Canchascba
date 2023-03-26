@@ -1,10 +1,13 @@
-import { GET_SPORTS, GET_USERS, GET_USER, GET_SPORT } from "../constants";
+import { GET_SPORTS, GET_USERS, GET_USER, GET_SPORT,GET_COMPANIESBYSPORT, GET_COMPANIEBYID, GET_FIELDSBYCS } from "../constants";
 
 const initialState = {
   allusers: [],
   user:{},
   allSports: [],
   sport:{},
+  companiesBySport:[],
+  company:{},
+  fieldsByCS:[],
 };
 
 const reducer = (state = initialState, action) => {
@@ -28,7 +31,22 @@ const reducer = (state = initialState, action) => {
         return {
           ...state,
           sport: action.payload,
-        }
+        };
+        case GET_COMPANIESBYSPORT:
+          return {
+            ...state,
+            companiesBySport:action.payload,
+          }
+          case GET_COMPANIEBYID:
+            return {
+              ...state,
+              company:action.payload,
+            }
+          case GET_FIELDSBYCS:
+            return {
+              ...state,
+              fieldsByCS: action.payload,
+            }
     default:
       return state;
   }

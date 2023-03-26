@@ -1,24 +1,47 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import * as Location from "expo-location";
 import { IconButton } from "@react-native-material/core";
 import { StyleSheet, Text, View, Button, ImageBackground } from "react-native";
 import { useIsFocused } from "@react-navigation/native";
-import { getSports } from "../../redux/actions";
+import { getSports, getCompaniesBySport } from "../../redux/actions";
 import Icon from "@expo/vector-icons/MaterialIcons";
-import {Colors} from "../Styles/Colors"
+import { Colors } from "../Styles/Colors";
 
 const Home = ({ navigation }) => {
   const dispatch = useDispatch();
   const sports = useSelector((state) => state.allSports);
   const isFocused = useIsFocused();
+  const companiesBySport = useSelector((state) => state.companiesBySport);
+  const [origin, setOrigin] = useState({
+    latitud: "",
+    longitud: "",
+  });
 
-  console.log(sports)
+
+  async function getLocationPermission() {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== "granted") {
+      alert("Permission denied");
+      return;
+    }
+    let location = await Location.getCurrentPositionAsync({});
+    const current = {
+      latitud: location.coords.latitude,
+      longitud: location.coords.longitude,
+    };
+    setOrigin(current);
+  }
+
+  useEffect(() => {
+    getLocationPermission();
+  }, []);
 
   useEffect(() => {
     if (isFocused) {
       dispatch(getSports());
     }
-  }, [ isFocused]);
+  }, [dispatch, isFocused]);
 
   const setImg = (name) => {
     switch (name) {
@@ -37,6 +60,11 @@ const Home = ({ navigation }) => {
       default:
         return "";
     }
+  };
+
+  const handleClick = (id) => {
+    dispatch(getCompaniesBySport(id));
+    navigation.navigate("EmpresasXDeporte");
   };
 
   return (
@@ -58,34 +86,33 @@ const Home = ({ navigation }) => {
           justifyContent: "center",
         }}
       >
-        {sports?.map((e) => (
-          <View key={e.id} style={{ alignItems: "center" }}>
-            
-            <Text style={{}}>{e.nombre}</Text>
-            <ImageBackground source={{
+        {sports.length > 0 &&
+          sports.map((e) => (
+            <View key={e.id} style={{ alignItems: "center" }}>
+              <Text style={{}}>{e.nombre}</Text>
+              <ImageBackground
+                source={{
                   uri: "https://static.vecteezy.com/system/resources/previews/002/082/394/original/abstract-header-with-red-and-black-layers-above-each-other-modern-design-banner-for-your-business-illustration-with-oblique-stripes-and-lines-vector.jpg",
-                }} resizeMode="cover" style={styles.image}>
-            <IconButton
-              style={styles.iconButtonSports}
-              color="white"
-              icon={(props) => (
-                <Icon
-                  name={setImg(e.nombre)}
-                  style={{ fontSize: 90 }}
-                  {...props}
+                }}
+                resizeMode="cover"
+                style={styles.image}
+              >
+                <IconButton
+                  style={styles.iconButtonSports}
+                  onPress={() => handleClick(e.id)}
+                  color="white"
+                  icon={(props) => (
+                    <Icon
+                      name={setImg(e.nombre)}
+                      style={{ fontSize: 90 }}
+                      {...props}
+                    />
+                  )}
                 />
-              )}
-            />
-        </ImageBackground>
-          </View>
-        ))}
+              </ImageBackground>
+            </View>
+          ))}
       </View>
-      <Button
-        title="Home1"
-        onPress={() => {
-          navigation.navigate("Canchas");
-        }}
-      />
     </View>
   );
 };
@@ -97,14 +124,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  image:{
+  image: {
     margin: 10,
   },
   iconButtonSports: {
     width: 130,
     height: 130,
     backgroundColor: "transparent",
-    
+
     borderRadius: 0,
     // margin: 10,
     shadowColor: "black",
@@ -117,7 +144,6 @@ const styles = StyleSheet.create({
 
     elevation: 4,
   },
-
 });
 
 export default Home;

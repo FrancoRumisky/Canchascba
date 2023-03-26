@@ -9,7 +9,8 @@ const {
   Canchas,
   DeporteXCancha,
   Horas,
-  HorasXCancha
+  HorasXCancha,
+  Servicios
 } = require("./src/db.js");
 
 const users = require("./Datos/Usuarios.json");
@@ -21,6 +22,8 @@ const canchas = require("./Datos/Canchas.json");
 const deportexcancha = require("./Datos/DeporteXCancha.json");
 const horas = require("./Datos/Horas.json");
 const horasxcancha = require("./Datos/HorasXCancha.json");
+const servicios = require("./Datos/Servicios.json");
+
 
 const PORT = process.env.PORT || 3001;
 
@@ -59,6 +62,15 @@ conn
 
     // asocio Horas y canchas
     await HorasXCancha.bulkCreate(horasxcancha)
+
+    //creo Servicios y los asocio a empresas
+    const services = await Servicios.bulkCreate(servicios)
+    let empresaNum = 1
+    for(let service of services) {
+      service.update({EmpresaId: empresaNum})
+      empresaNum += 1
+    }
+
 
     server.listen(PORT, () => {
       console.log("Server listening at " + PORT);
