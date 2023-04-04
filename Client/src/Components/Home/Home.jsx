@@ -10,6 +10,37 @@ import Icon from "@expo/vector-icons/MaterialIcons";
 //imports Redux
 import { getSports, getCompaniesBySport } from "../../redux/actions";
 
+
+//Styles
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    // backgroundColor: "lightgray",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  image: {
+    margin: 10,
+  },
+  iconButtonSports: {
+    width: 130,
+    height: 130,
+    backgroundColor: "transparent",
+
+    borderRadius: 0,
+    shadowColor: "black",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.85,
+    shadowRadius: 3.84,
+
+    elevation: 4,
+  },
+});
+
+
 const Home = ({ navigation }) => {
   const dispatch = useDispatch();
   const isFocused = useIsFocused();
@@ -95,33 +126,6 @@ const Home = ({ navigation }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "lightgray",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  image: {
-    margin: 10,
-  },
-  iconButtonSports: {
-    width: 130,
-    height: 130,
-    backgroundColor: "transparent",
 
-    borderRadius: 0,
-    // margin: 10,
-    shadowColor: "black",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.85,
-    shadowRadius: 3.84,
-
-    elevation: 4,
-  },
-});
 
 export default Home;

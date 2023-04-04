@@ -1,23 +1,29 @@
 [
   {
     "nombre": "Empresa 1",
-    "direccion": "Av. Patria 948, Pueyrredón, X5004CFN Córdoba",
+    "calle": "Av. Patria 948",
+    "codigoPostal":"X5004CFN",
+    "ciudad":"Córdoba",
     "latitud":"-31.40335999028914",
     "longitud":"-64.15985997959964",
-    "horarios": ["11:00", "02:00"]
+    "horarios": "11:00 a 02:00"
   },
   {
     "nombre": "Empresa 2",
-    "direccion": "Blvd. Bulnes 4950, X5013 Córdoba",
+    "calle": "Blvd. Bulnes 4950",
+    "codigoPostal":"X5013",
+    "ciudad":"Córdoba",
     "latitud":"-31.388620173140662",
     "longitud":"-64.1306774899709",
-    "horarios": ["18:00", "02:00"]
+    "horarios": "18:00 a 02:00"
   },
   {
     "nombre": "Empresa 3",
-    "direccion": "Padre Luis Monti 2246, X5004ENR Córdoba",
+    "calle": "Padre Luis Monti 2246",
+    "codigoPostal":"X5004ENR",
+    "ciudad":"Córdoba",
     "latitud":"-31.397773460384684",
     "longitud":"-64.15831707364927",
-    "horarios": ["09:00", "13:00","17:00", "00:00"]
+    "horarios": "09:00 a 13:00 - 17:00 a 00:00"
   }
 ]

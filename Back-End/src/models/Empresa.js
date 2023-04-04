@@ -13,7 +13,15 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      direccion: {
+      calle: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      codigoPostal:{
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      ciudad:{
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -26,7 +34,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       horarios: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.STRING,
         allowNull: false,
       },
     },
