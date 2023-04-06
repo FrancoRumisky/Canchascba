@@ -19,6 +19,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  title:{
+    marginTop: -60,
+          marginBottom: 30,
+          fontWeight: 700,
+          fontSize: 25,
+  },
   image: {
     margin: 10,
   },
@@ -83,12 +89,7 @@ const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text
-        style={{
-          marginTop: -60,
-          marginBottom: 30,
-          fontWeight: 700,
-          fontSize: 25,
-        }}
+        style={styles.title}
       >
         Selecciona un deporte
       </Text>

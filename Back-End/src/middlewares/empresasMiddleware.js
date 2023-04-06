@@ -12,7 +12,8 @@ router.get("/", async (req, res) => {
         idsport
       );
 
-      if (!companybysport.length) return res.status(404).json({ error: "Not found" });
+      if (!companybysport.length)
+        return res.status(404).json({ error: "Not found" });
 
       return res.status(200).json(companybysport);
     } catch (error) {
@@ -34,6 +35,20 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/ubicacion", async (req, res, next) => {
+  try {
+    const ubi = await CompaniesController.findByUbi();
+    if (!ubi) return res.status(404).json({ error: "Not found" });
+    const newUbi = [...new Set(ubi.map(e=>e.ciudad))]
+    return res.status(200).json(newUbi);
+  } catch (error) {
+    console.error(
+      "GET /empresas/ubicacion CompaniesController.findByUbi error"
+    );
+    next(error);
+  }
+});
+
 router.get("/:id", async (req, res, next) => {
   const { id } = req.params;
 
@@ -50,5 +65,7 @@ router.get("/:id", async (req, res, next) => {
     next(error);
   }
 });
+
+
 
 module.exports = router;

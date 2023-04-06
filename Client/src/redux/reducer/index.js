@@ -1,13 +1,23 @@
-import { GET_SPORTS, GET_USERS, GET_USER, GET_SPORT,GET_COMPANIESBYSPORT, GET_COMPANIEBYID, GET_FIELDSBYCS } from "../constants";
+import {
+  GET_SPORTS,
+  GET_USERS,
+  GET_USER,
+  GET_SPORT,
+  GET_COMPANIESBYSPORT,
+  GET_COMPANIEBYID,
+  GET_FIELDSBYCS,
+  GET_UBI,
+} from "../constants";
 
 const initialState = {
   allusers: [],
-  user:{},
+  user: {},
   allSports: [],
-  sport:{},
-  companiesBySport:[],
-  company:{},
-  fieldsByCS:[],
+  sport: {},
+  companiesBySport: [],
+  company: {},
+  fieldsByCS: [],
+  Ubicacion: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -17,36 +27,41 @@ const reducer = (state = initialState, action) => {
         ...state,
         allusers: action.payload,
       };
-      case GET_USER:
-        return {
-          ...state,
-          user:action.payload,
-        };
-      case GET_SPORTS:
+    case GET_USER:
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case GET_SPORTS:
       return {
         ...state,
         allSports: action.payload,
       };
-      case GET_SPORT:
-        return {
-          ...state,
-          sport: action.payload,
-        };
-        case GET_COMPANIESBYSPORT:
-          return {
-            ...state,
-            companiesBySport:action.payload,
-          }
-          case GET_COMPANIEBYID:
-            return {
-              ...state,
-              company:action.payload,
-            }
-          case GET_FIELDSBYCS:
-            return {
-              ...state,
-              fieldsByCS: action.payload,
-            }
+    case GET_SPORT:
+      return {
+        ...state,
+        sport: action.payload,
+      };
+    case GET_COMPANIESBYSPORT:
+      return {
+        ...state,
+        companiesBySport: action.payload,
+      };
+    case GET_COMPANIEBYID:
+      return {
+        ...state,
+        company: action.payload,
+      };
+    case GET_FIELDSBYCS:
+      return {
+        ...state,
+        fieldsByCS: action.payload,
+      };
+      case  GET_UBI:
+      return {
+        ...state,
+        Ubicacion: action.payload,
+      };
     default:
       return state;
   }

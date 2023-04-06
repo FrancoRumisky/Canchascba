@@ -1,5 +1,5 @@
 //Imports React
-import React from "react";
+import React, { useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     // backgroundColor: Colors.black,
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 110,
+    marginBottom: "32%",
   },
   btnMap: {
     position: "absolute",
@@ -148,7 +148,7 @@ const CompaniesBySport = ({ navigation }) => {
                           name="map-marker"
                           style={styles.icon}
                         />
-                        <Text style={styles.txtServices}>{e.calle + e.cuidad}</Text>
+                        <Text style={styles.txtServices}>{e.calle +", "+ e.ciudad}</Text>
                       </View>
                     </Text>
                     <Text>

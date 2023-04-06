@@ -7,5 +7,7 @@
   { "EmpresaId": "2", "DeporteId": "4" },
   { "EmpresaId": "3", "DeporteId": "5" },
   { "EmpresaId": "3", "DeporteId": "6" },
-  { "EmpresaId": "3", "DeporteId": "1" }
+  { "EmpresaId": "3", "DeporteId": "1" },
+  { "EmpresaId": "4", "DeporteId": "1" },
+  { "EmpresaId": "4", "DeporteId": "2" }
 ]

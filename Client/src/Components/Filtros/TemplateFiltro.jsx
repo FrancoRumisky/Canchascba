@@ -5,6 +5,7 @@ import { Button, Pressable } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import { Colors } from "../Styles/Colors";
 import DeporteFiltro from "./DeporteFiltro";
+import UbicacionFiltro from "./UbicacionFiltro";
 
 const styles = StyleSheet.create({
   centeredView: {
@@ -47,7 +48,7 @@ function TemplateFiltro({ title, name }) {
   const companiesBySport = useSelector((state) => state.companiesBySport);
   const titlereplace = title.replace(/["']/g, "");
   const [filter, setFilter] = useState({
-    Ubicacion: "",
+    Ubicacion: <UbicacionFiltro />,
     Deporte: <DeporteFiltro />,
     Servicios: "",
   });

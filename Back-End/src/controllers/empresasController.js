@@ -48,4 +48,15 @@ const findCompaniesXSport = async (idSport) => {
   }
 };
 
-module.exports = { findById, findAllCompanies, findCompaniesXSport };
+const findByUbi = async () => {
+  try{
+    return await Empresa.findAll({
+      attributes:["ciudad"]
+    })
+  } catch(error){
+    console.error(error);
+    throw error;
+  }
+}
+
+module.exports = { findById, findAllCompanies, findCompaniesXSport,findByUbi };
