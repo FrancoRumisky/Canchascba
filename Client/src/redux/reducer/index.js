@@ -7,6 +7,7 @@ import {
   GET_COMPANIEBYID,
   GET_FIELDSBYCS,
   GET_UBI,
+  FILTER_BY_LOCATION
 } from "../constants";
 
 const initialState = {
@@ -17,7 +18,7 @@ const initialState = {
   companiesBySport: [],
   company: {},
   fieldsByCS: [],
-  Ubicacion: [],
+  ubicacion: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -60,8 +61,13 @@ const reducer = (state = initialState, action) => {
       case  GET_UBI:
       return {
         ...state,
-        Ubicacion: action.payload,
+        ubicacion: action.payload,
       };
+      case FILTER_BY_LOCATION:
+        return {
+          ...state,
+          companiesBySport: action.payload,
+        }
     default:
       return state;
   }

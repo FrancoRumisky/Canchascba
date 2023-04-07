@@ -7,6 +7,7 @@ import {
   GET_COMPANIEBYID,
   GET_FIELDSBYCS,
   GET_UBI,
+  FILTER_BY_LOCATION
 } from "../constants";
 // import axios from "axios"
 import { BACKEND_SERVER } from "@env";
@@ -91,6 +92,16 @@ export function getLocation() {
       .then((res) => res.json())
       .then((res) => {
         dispatch({ type: GET_UBI, payload: res });
+      });
+  };
+}
+
+export function filterByLocation(idsport, loc) {
+  return function (dispatch) {
+    fetch(server + `/empresas/filterByLocation?idsport=${idsport}&loc=${loc}`)
+      .then((res) => res.json())
+      .then((res) => {
+        dispatch({ type: FILTER_BY_LOCATION, payload: res });
       });
   };
 }

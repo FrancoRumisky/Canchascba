@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const { Empresa, Servicios, Deportes, Canchas } = require("../db");
 
 const findQuery = {
@@ -38,7 +39,7 @@ const findCompaniesXSport = async (idSport) => {
         { model: Servicios, attributes: { exclude: ["EmpresaId"] } },
         {
           model: Canchas,
-          include: [{ model: Deportes, where: { id: idSport }}],
+          include: [{ model: Deportes, where: { id: idSport } }],
         },
       ],
     });
@@ -49,14 +50,45 @@ const findCompaniesXSport = async (idSport) => {
 };
 
 const findByUbi = async () => {
-  try{
+  try {
     return await Empresa.findAll({
-      attributes:["ciudad"]
-    })
-  } catch(error){
+      attributes: ["ciudad"],
+    });
+  } catch (error) {
     console.error(error);
     throw error;
   }
-}
+};
 
-module.exports = { findById, findAllCompanies, findCompaniesXSport,findByUbi };
+const filterByLocation = async (idsport, loc) => {
+  try {
+    return await Empresa.findAll({
+      where: {
+        ciudad: { [Op.like]: `%${loc}%` },
+      },
+      include: [
+        {
+          model: Deportes,
+          where: { id: idsport },
+          through: { attributes: [] },
+        },
+        { model: Servicios, attributes: { exclude: ["EmpresaId"] } },
+        {
+          model: Canchas,
+          include: [{ model: Deportes, where: { id: idsport } }],
+        },
+      ],
+    });
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
+module.exports = {
+  findById,
+  findAllCompanies,
+  findCompaniesXSport,
+  findByUbi,
+  filterByLocation,
+};

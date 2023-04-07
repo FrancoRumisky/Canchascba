@@ -39,11 +39,29 @@ router.get("/ubicacion", async (req, res, next) => {
   try {
     const ubi = await CompaniesController.findByUbi();
     if (!ubi) return res.status(404).json({ error: "Not found" });
-    const newUbi = [...new Set(ubi.map(e=>e.ciudad))]
+    const newUbi = [...new Set(ubi.map((e) => e.ciudad))];
     return res.status(200).json(newUbi);
   } catch (error) {
     console.error(
       "GET /empresas/ubicacion CompaniesController.findByUbi error"
+    );
+    next(error);
+  }
+});
+
+router.get("/filterBylocation", async (req, res, next) => {
+  const { idsport, loc } = req.query;
+
+  if (!idsport || !loc)
+    return res.status(400).send("no idsport or loc provided");
+
+  try {
+    const location = await CompaniesController.filterByLocation(idsport, loc);
+    if (!location) return res.status(404).json({ error: "Not found" });
+    return res.status(200).json(location);
+  } catch (error) {
+    console.error(
+      "GET /empresas/filterByUbicacion CompaniesController.filterByLocation error"
     );
     next(error);
   }
@@ -65,7 +83,5 @@ router.get("/:id", async (req, res, next) => {
     next(error);
   }
 });
-
-
 
 module.exports = router;

@@ -29,7 +29,7 @@ function DeporteFiltro() {
   return (
     <View style={styles.modalView}>
       <View style={styles.modalText}>
-        {sports.length  && sports.map((e) => {
+        {sports.length > 0 && sports.map((e) => {
           return (
             <View key={e.id} style={styles.icon}>
               <Button
