@@ -59,7 +59,7 @@ function TemplateFiltro({ title, name }) {
   //   }
   // }, [companiesBySport]);
 
-  console.log(filter[titlereplace]);
+
   return (
     <View>
       <Modal

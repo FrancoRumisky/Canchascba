@@ -15,12 +15,14 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getFieldsByCompanyAndSport,
   getCompanieById,
+  getCompanies
 } from "../../redux/actions";
 //Imports Styles
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import { Colors } from "../Styles/Colors";
 //Imports Components
 import Filtros from "../Filtros/Filtros";
+import { useFocusEffect } from "@react-navigation/native";
 
 const screenHeight = Dimensions.get("window").height;
 const screenWidth = Dimensions.get("window").width;
@@ -85,6 +87,12 @@ const CompaniesBySport = ({ navigation }) => {
     dispatch(getCompanieById(idcompany));
     navigation.navigate("CanchasXEYD");
   };
+
+  useFocusEffect(
+    React.useCallback(() => {
+      dispatch(getCompanies())
+    }, [])
+  );
 
 
   if (companiesBySport.length === 0)

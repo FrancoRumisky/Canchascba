@@ -3,11 +3,12 @@ import {
   GET_USERS,
   GET_USER,
   GET_SPORT,
+  GET_COMPANIES,
   GET_COMPANIESBYSPORT,
   GET_COMPANIEBYID,
   GET_FIELDSBYCS,
   GET_UBI,
-  FILTER_BY_LOCATION
+  FILTER_BY_LOCATION,
 } from "../constants";
 
 const initialState = {
@@ -15,6 +16,7 @@ const initialState = {
   user: {},
   allSports: [],
   sport: {},
+  companies:[],
   companiesBySport: [],
   company: {},
   fieldsByCS: [],
@@ -43,6 +45,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         sport: action.payload,
       };
+    case GET_COMPANIES:
+      return {
+        ...state,
+        companies: action.payload,
+      };
     case GET_COMPANIESBYSPORT:
       return {
         ...state,
@@ -58,16 +65,17 @@ const reducer = (state = initialState, action) => {
         ...state,
         fieldsByCS: action.payload,
       };
-      case  GET_UBI:
+    case GET_UBI:
       return {
         ...state,
         ubicacion: action.payload,
       };
-      case FILTER_BY_LOCATION:
-        return {
-          ...state,
-          companiesBySport: action.payload,
-        }
+    case FILTER_BY_LOCATION:
+      const companiesFiltered = state.companiesBySport.filter(e=> action.payload.includes(e.ciudad));
+      return {
+        ...state,
+        companiesBySport: companiesFiltered,
+      };
     default:
       return state;
   }

@@ -5,14 +5,13 @@ const router = Router();
 
 router.get("/", async (req, res) => {
   const { idsport } = req.query;
-
   if (idsport) {
     try {
       const companybysport = await CompaniesController.findCompaniesXSport(
         idsport
       );
 
-      if (!companybysport.length)
+      if (!companybysport.length > 0)
         return res.status(404).json({ error: "Not found" });
 
       return res.status(200).json(companybysport);
@@ -44,24 +43,6 @@ router.get("/ubicacion", async (req, res, next) => {
   } catch (error) {
     console.error(
       "GET /empresas/ubicacion CompaniesController.findByUbi error"
-    );
-    next(error);
-  }
-});
-
-router.get("/filterBylocation", async (req, res, next) => {
-  const { idsport, loc } = req.query;
-
-  if (!idsport || !loc)
-    return res.status(400).send("no idsport or loc provided");
-
-  try {
-    const location = await CompaniesController.filterByLocation(idsport, loc);
-    if (!location) return res.status(404).json({ error: "Not found" });
-    return res.status(200).json(location);
-  } catch (error) {
-    console.error(
-      "GET /empresas/filterByUbicacion CompaniesController.filterByLocation error"
     );
     next(error);
   }

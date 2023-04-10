@@ -3,6 +3,7 @@ import {
   GET_USERS,
   GET_USER,
   GET_SPORT,
+  GET_COMPANIES,
   GET_COMPANIESBYSPORT,
   GET_COMPANIEBYID,
   GET_FIELDSBYCS,
@@ -56,6 +57,16 @@ export function getSports() {
   };
 }
 
+export function getCompanies(){
+  return function (dispatch){
+    fetch(server + `/empresas`)
+    .then((res) => res.json())
+      .then((res) => {
+        dispatch({ type: GET_COMPANIES, payload: res });
+      });
+  };
+}
+
 export function getCompaniesBySport(id) {
   return function (dispatch) {
     fetch(server + `/empresas?idsport=${id}`)
@@ -96,12 +107,8 @@ export function getLocation() {
   };
 }
 
-export function filterByLocation(idsport, loc) {
+export function filter(props) {
   return function (dispatch) {
-    fetch(server + `/empresas/filterByLocation?idsport=${idsport}&loc=${loc}`)
-      .then((res) => res.json())
-      .then((res) => {
-        dispatch({ type: FILTER_BY_LOCATION, payload: res });
-      });
+    dispatch({type: FILTER_BY_LOCATION, payload: props});
   };
 }

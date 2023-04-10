@@ -2,22 +2,23 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+// const apicache = require("apicache");
 
-// ALL ROUTING IS DONE HERE
+
 const routes = require("./routes/index.js");
+// const cache = apicache.middleware
 
-// EXPRESS APP CONFIGURATION
 const server = express();
 server.name = "";
 
-// HTTP REQUEST LOGGER
+
 server.use(morgan("dev"));
 
-// ACCEPTS URL-ENCODED AND JSON DATA
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
+// server.use(cache("2 minutes"))
 
-// CONFIGURES CORS
+
 server.use(
   cors({
     origin: [

@@ -60,35 +60,9 @@ const findByUbi = async () => {
   }
 };
 
-const filterByLocation = async (idsport, loc) => {
-  try {
-    return await Empresa.findAll({
-      where: {
-        ciudad: { [Op.like]: `%${loc}%` },
-      },
-      include: [
-        {
-          model: Deportes,
-          where: { id: idsport },
-          through: { attributes: [] },
-        },
-        { model: Servicios, attributes: { exclude: ["EmpresaId"] } },
-        {
-          model: Canchas,
-          include: [{ model: Deportes, where: { id: idsport } }],
-        },
-      ],
-    });
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
-};
-
 module.exports = {
   findById,
   findAllCompanies,
   findCompaniesXSport,
   findByUbi,
-  filterByLocation,
 };
