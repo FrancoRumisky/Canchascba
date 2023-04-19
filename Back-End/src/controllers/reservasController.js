@@ -37,7 +37,7 @@ const findReservation = async (fecha, horaInicio, horaFin) => {
       {
         horaInicio: {
           [Op.gte]: horaInicio,
-          [Op.lt]: horaFin,
+          [Op.lte]: horaFin,
         },
       },
     ],
