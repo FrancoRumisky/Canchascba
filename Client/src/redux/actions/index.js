@@ -68,7 +68,7 @@ export function getCompanies(){
   };
 }
 
-export function getCompaniesBySport(id,fecha,horaInicio) {
+export function getCompaniesBySport(id) {
   return function (dispatch) {
     dispatch(loading());
     fetch(server + `/empresas?idsport=${id}`)
@@ -89,9 +89,9 @@ export function getCompanieById(id) {
   };
 }
 
-export function getFieldsByCompanyAndSport(idcompany, idsport) {
+export function getFieldsByCompanyAndSport(idcompany, idsport, fecha, horaInicio, horaFin) {
   return function (dispatch) {
-    fetch(server + `/canchas?idcompany=${idcompany}&idsport=${idsport}`)
+    fetch(server + `/canchas?idcompany=${idcompany}&idsport=${idsport}&fecha=${fecha}&horaInicio=${horaInicio}&horaFin=${horaFin}`)
       .then((res) => res.json())
       .then((res) => {
         dispatch({ type: GET_FIELDSBYCS, payload: res });

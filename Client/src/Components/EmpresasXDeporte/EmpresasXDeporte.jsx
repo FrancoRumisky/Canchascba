@@ -29,11 +29,6 @@ import { useFocusEffect } from "@react-navigation/native";
 const screenHeight = Dimensions.get("window").height;
 const screenWidth = Dimensions.get("window").width;
 
-var today = new Date();
-  var options = { weekday: "long", hour: "numeric", minute: "numeric" };
-  var now = today.toLocaleString("es", options);
-  console.log(now);
-
 //Styles
 const styles = StyleSheet.create({
   container: {
@@ -90,17 +85,23 @@ const CompaniesBySport = ({ navigation }) => {
   const loading = useSelector((state) => state.loading);
   const dispatch = useDispatch();
 
-  const handleClick = (idcompany, idsport) => {
-    dispatch(getFieldsByCompanyAndSport(idcompany, idsport));
-    dispatch(getCompanieById(idcompany));
-    navigation.navigate("CanchasXEYD");
-  };
-
   useFocusEffect(
     React.useCallback(() => {
       dispatch(getCompanies());
     }, [])
   );
+
+  var today = new Date();
+      var now = today.toLocaleString();
+      const fecha = now.split(" ")[0];
+      const horaInicio = now.split(" ")[1];
+      const horaFin = horaInicio;
+
+  const handleClick = (idcompany, idsport) => {
+    dispatch(getFieldsByCompanyAndSport(idcompany, idsport, fecha, horaInicio, horaFin));
+    dispatch(getCompanieById(idcompany));
+    navigation.navigate("CanchasXEYD");
+  };
 
   // if (companiesBySport.length === 0)
   //   return (
