@@ -2,14 +2,21 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IconButton } from "@react-native-material/core";
-import { StyleSheet, Text, View, ImageBackground } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ImageBackground,
+  ActivityIndicator,
+} from "react-native";
 import { useIsFocused } from "@react-navigation/native";
 //imports Expo
 import * as Location from "expo-location";
 import Icon from "@expo/vector-icons/MaterialIcons";
 //imports Redux
 import { getSports, getCompaniesBySport } from "../../redux/actions";
-
+//import globalvars
+import { Colors } from "../Styles/Colors";
 
 //Styles
 const styles = StyleSheet.create({
@@ -19,11 +26,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  title:{
+  title: {
     marginTop: -60,
-          marginBottom: 30,
-          fontWeight: 700,
-          fontSize: 25,
+    marginBottom: 30,
+    fontWeight: 700,
+    fontSize: 25,
   },
   image: {
     margin: 10,
@@ -46,11 +53,11 @@ const styles = StyleSheet.create({
   },
 });
 
-
 const Home = ({ navigation }) => {
   const dispatch = useDispatch();
   const isFocused = useIsFocused();
   const sports = useSelector((state) => state.allSports);
+  const loading = useSelector((state) => state.loading);
 
   const [origin, setOrigin] = useState({
     latitud: "",
@@ -86,13 +93,13 @@ const Home = ({ navigation }) => {
     navigation.navigate("EmpresasXDeporte");
   };
 
-  return (
+  return loading ? (
     <View style={styles.container}>
-      <Text
-        style={styles.title}
-      >
-        Selecciona un deporte
-      </Text>
+      <ActivityIndicator size={80} color={Colors.red} />
+    </View>
+  ) : (
+    <View style={styles.container}>
+      <Text style={styles.title}>Selecciona un deporte</Text>
       <View
         style={{
           flexDirection: "row",
@@ -126,7 +133,5 @@ const Home = ({ navigation }) => {
     </View>
   );
 };
-
-
 
 export default Home;

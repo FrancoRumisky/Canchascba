@@ -16,11 +16,13 @@ const initialState = {
   user: {},
   allSports: [],
   sport: {},
-  companies:[],
+  companies: [],
+  currentCompanies: [],
   companiesBySport: [],
   company: {},
   fieldsByCS: [],
   ubicacion: [],
+  loading: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -39,6 +41,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allSports: action.payload,
+        loading:false,
       };
     case GET_SPORT:
       return {
@@ -54,6 +57,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         companiesBySport: action.payload,
+        currentCompanies: action.payload,
+        loading:false,
       };
     case GET_COMPANIEBYID:
       return {
@@ -71,10 +76,17 @@ const reducer = (state = initialState, action) => {
         ubicacion: action.payload,
       };
     case FILTER_BY_LOCATION:
-      const companiesFiltered = state.companiesBySport.filter(e=> action.payload.includes(e.ciudad));
+      const companiesFiltered = state.currentCompanies.filter((e) =>
+        action.payload.includes(e.ciudad)
+      );
       return {
         ...state,
         companiesBySport: companiesFiltered,
+      };
+    case "LOADING":
+      return {
+        ...state,
+        loading: true,
       };
     default:
       return state;

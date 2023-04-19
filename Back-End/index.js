@@ -10,7 +10,8 @@ const {
   DeporteXCancha,
   Horas,
   HorasXCancha,
-  Servicios
+  Servicios,
+  Reservas,
 } = require("./src/db.js");
 
 const users = require("./Datos/Usuarios.json");
@@ -23,6 +24,7 @@ const deportexcancha = require("./Datos/DeporteXCancha.json");
 const horas = require("./Datos/Horas.json");
 const horasxcancha = require("./Datos/HorasXCancha.json");
 const servicios = require("./Datos/Servicios.json");
+const reservas = require("./Datos/Reservas.json");
 
 
 const PORT = process.env.PORT || 3001;
@@ -70,6 +72,9 @@ conn
       service.update({EmpresaId: empresaNum})
       empresaNum += 1
     }
+
+    //creo reservas
+    await Reservas.bulkCreate(reservas)
 
 
     server.listen(PORT, () => {

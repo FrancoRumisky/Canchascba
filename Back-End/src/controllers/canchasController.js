@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const { Canchas, Empresa, Deportes } = require("../db");
 
 const findQuery = {
@@ -26,18 +27,29 @@ const findAllFields = async () => {
   }
 };
 
-const findFieldsXCompanyAndSport = async (idcompany, idsport) => {
+const findFieldsXCompanyAndSport = async (idcompany, idsport, fieldIds) => {
   try {
     return await Canchas.findAll({
-      where: {EmpresaId: idcompany},
-      include:[{model: Deportes, where:{id:idsport}, through: { attributes: [] } }]
+      where: {
+        EmpresaId: idcompany,
+        [Op.and]: {
+          id: {
+            [Op.notIn]: fieldIds,
+          },
+        },
+      },
+      include: [
+        {
+          model: Deportes,
+          where: { id: idsport },
+          through: { attributes: [] },
+        },
+      ],
     });
   } catch (error) {
     console.error(error);
     throw error;
   }
 };
-
-
 
 module.exports = { findById, findAllFields, findFieldsXCompanyAndSport };

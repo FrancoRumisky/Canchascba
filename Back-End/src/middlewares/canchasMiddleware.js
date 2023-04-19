@@ -1,15 +1,26 @@
 const { Router } = require("express");
 const FieldsController = require("../controllers/canchasController");
+const reservationsController = require("../controllers/reservasController");
 
 const router = Router();
 
 router.get("/", async (req, res) => {
-  const { idcompany, idsport } = req.query;
+  const { idcompany, idsport, fecha, horaInicio, horaFin } = req.query;
 
-  if (idcompany && idsport) {
+  if (idcompany && idsport && fecha && horaInicio && horaFin) {
     try {
+      const specificResetvation = await reservationsController.findReservation(
+        fecha,
+        horaInicio,
+        horaFin
+      );
+
+      const fieldIds = specificResetvation.map((e) => e.CanchaId);
+
       const fieldsxcompany = await FieldsController.findFieldsXCompanyAndSport(
-        idcompany, idsport
+        idcompany,
+        idsport,
+        fieldIds
       );
 
       if (!fieldsxcompany.length)

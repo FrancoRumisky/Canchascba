@@ -1,5 +1,5 @@
 const { Op } = require("sequelize");
-const { Empresa, Servicios, Deportes, Canchas } = require("../db");
+const { Empresa, Servicios, Deportes, Canchas, Reservas } = require("../db");
 
 const findQuery = {
   include: [
@@ -39,7 +39,14 @@ const findCompaniesXSport = async (idSport) => {
         { model: Servicios, attributes: { exclude: ["EmpresaId"] } },
         {
           model: Canchas,
-          include: [{ model: Deportes, where: { id: idSport } }],
+          include: [
+            {
+              model: Deportes,
+              through: { attributes: [] },
+              where: { id: idSport },
+            },
+            { model: Reservas },
+          ],
         },
       ],
     });

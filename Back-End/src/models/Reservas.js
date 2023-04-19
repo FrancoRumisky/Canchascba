@@ -5,20 +5,20 @@ module.exports = (sequelize) => {
     "Reservas",
     {
       id: {
-        type: DataTypes.UUID,
+        type: DataTypes.INTEGER,
         primaryKey: true,
-        defaultValue: DataTypes.UUIDV4,
+        autoIncrement: true,
       },
       fecha: {
-        type: DataTypes.DATEONLY,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       horaInicio: {
-        type: DataTypes.STRING,
+        type: DataTypes.TIME,
         allowNull: false,
       },
       horaFin: {
-        type: DataTypes.STRING,
+        type: DataTypes.TIME,
         allowNull: false,
       },
       estado: {
@@ -26,8 +26,5 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
     },
-    {
-      timestamps: false,
-    }
   );
 };

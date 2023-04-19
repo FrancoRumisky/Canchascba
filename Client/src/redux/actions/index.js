@@ -49,11 +49,12 @@ export function getOneSport(id) {
 
 export function getSports() {
   return function (dispatch) {
+    dispatch(loading());
     fetch(server + `/deportes/`)
-      .then((res) => res.json())
-      .then((res) => {
-        dispatch({ type: GET_SPORTS, payload: res });
-      });
+    .then((res) => res.json())
+    .then((res) => {
+      dispatch({ type: GET_SPORTS, payload: res });
+    });
   };
 }
 
@@ -67,8 +68,9 @@ export function getCompanies(){
   };
 }
 
-export function getCompaniesBySport(id) {
+export function getCompaniesBySport(id,fecha,horaInicio) {
   return function (dispatch) {
+    dispatch(loading());
     fetch(server + `/empresas?idsport=${id}`)
       .then((res) => res.json())
       .then((res) => {
@@ -107,8 +109,12 @@ export function getLocation() {
   };
 }
 
-export function filter(props) {
+export function setFilters(props) {
   return function (dispatch) {
     dispatch({type: FILTER_BY_LOCATION, payload: props});
   };
+}
+
+export function loading() {
+  return { type: "LOADING" };
 }

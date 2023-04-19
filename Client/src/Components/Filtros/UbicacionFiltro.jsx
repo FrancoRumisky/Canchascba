@@ -2,7 +2,11 @@ import React, { useEffect, useState, useRef } from "react";
 import { StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "@react-native-material/core";
-import { getLocation, filterByLocation } from "../../redux/actions";
+import {
+  getLocation,
+  setFilters,
+  getCompaniesBySport,
+} from "../../redux/actions";
 import IconMaterial from "@expo/vector-icons/MaterialIcons";
 import { Colors } from "../Styles/Colors";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
@@ -33,7 +37,14 @@ function UbicacionFiltro() {
 
   useEffect(() => {
     console.log(filter);
-  }, [filter,checkboxState]);
+    if (Object.entries(checkboxState).length > 0) {
+      if (filter.length > 0) {
+        dispatch(setFilters(filter));
+      } else {
+        dispatch(getCompaniesBySport(currentSport));
+      }
+    }
+  }, [filter, checkboxState]);
 
   const handlePress = (idsport) => {
     setCheckboxState({ ...checkboxState, [idsport]: !checkboxState[idsport] });
@@ -64,7 +75,7 @@ function UbicacionFiltro() {
                   )}
                   trailing={() => (
                     <BouncyCheckbox
-                      style={{ marginTop:0}}
+                      style={{ marginTop: 0 }}
                       fillColor={Colors.red}
                       innerIconStyle={{
                         borderColor: !checkboxState[e] ? Colors.black : "white",

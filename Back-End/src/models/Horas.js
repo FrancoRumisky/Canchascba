@@ -10,12 +10,8 @@ module.exports = (sequelize) => {
         autoIncrement: true,
       },
       hora: {
-        type: DataTypes.STRING,
+        type: DataTypes.TIME,
         allowNull: false,
-      },
-      disponible:{
-        type: DataTypes.BOOLEAN,
-        defaultValue: true,
       },
     },
     {

@@ -7,6 +7,7 @@ import {
   Image,
   ScrollView,
   Dimensions,
+  ActivityIndicator,
 } from "react-native";
 import { IconButton, Avatar, Divider } from "@react-native-material/core";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -15,7 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getFieldsByCompanyAndSport,
   getCompanieById,
-  getCompanies
+  getCompanies,
 } from "../../redux/actions";
 //Imports Styles
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
@@ -24,8 +25,14 @@ import { Colors } from "../Styles/Colors";
 import Filtros from "../Filtros/Filtros";
 import { useFocusEffect } from "@react-navigation/native";
 
+//screen dimensions
 const screenHeight = Dimensions.get("window").height;
 const screenWidth = Dimensions.get("window").width;
+
+var today = new Date();
+  var options = { weekday: "long", hour: "numeric", minute: "numeric" };
+  var now = today.toLocaleString("es", options);
+  console.log(now);
 
 //Styles
 const styles = StyleSheet.create({
@@ -35,6 +42,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginBottom: "32%",
+  },
+  loadingcontainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
   },
   btnMap: {
     position: "absolute",
@@ -48,7 +60,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
   },
   card: {
-    width:screenWidth - 20,
+    width: screenWidth - 20,
     height: 180,
     backgroundColor: "white",
     flexDirection: "row",
@@ -67,20 +79,16 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 20,
     borderTopLeftRadius: 20,
     width: "28%",
-    color:"white",
-    paddingLeft:17,
-    fontSize:13
-    
+    color: "white",
+    paddingLeft: 17,
+    fontSize: 13,
   },
 });
 
-
-
-
 const CompaniesBySport = ({ navigation }) => {
   const companiesBySport = useSelector((state) => state.companiesBySport);
+  const loading = useSelector((state) => state.loading);
   const dispatch = useDispatch();
-
 
   const handleClick = (idcompany, idsport) => {
     dispatch(getFieldsByCompanyAndSport(idcompany, idsport));
@@ -90,24 +98,31 @@ const CompaniesBySport = ({ navigation }) => {
 
   useFocusEffect(
     React.useCallback(() => {
-      dispatch(getCompanies())
+      dispatch(getCompanies());
     }, [])
   );
 
+  // if (companiesBySport.length === 0)
+  //   return (
+  //     <View>
+  //       <Text>No Hay Canchas Para Mostrar</Text>
+  //     </View>
+  //   );
 
-  if (companiesBySport.length === 0)
-    return (
-      <View>
-        <Text>No Hay Canchas Para Mostrar</Text>
-      </View>
-    );
-
-  return (
-    <View style={{ height: screenHeight, }}>
+  return loading ? (
+    <View style={styles.loadingcontainer}>
+      <ActivityIndicator size={80} color={Colors.red} />
+    </View>
+  ) : companiesBySport.length === 0 ? (
+    <View>
+      <Text>No Hay Canchas Para Mostrar</Text>
+    </View>
+  ) : (
+    <View style={{ height: screenHeight }}>
       <Filtros />
       <ScrollView>
         <View style={styles.container}>
-          {companiesBySport.length !== 0 &&
+          {companiesBySport.length > 0 &&
             companiesBySport?.map((e) => {
               return (
                 <TouchableOpacity
@@ -156,7 +171,9 @@ const CompaniesBySport = ({ navigation }) => {
                           name="map-marker"
                           style={styles.icon}
                         />
-                        <Text style={styles.txtServices}>{e.calle +", "+ e.ciudad}</Text>
+                        <Text style={styles.txtServices}>
+                          {e.calle + ", " + e.ciudad}
+                        </Text>
                       </View>
                     </Text>
                     <Text>
@@ -166,9 +183,7 @@ const CompaniesBySport = ({ navigation }) => {
                           name="clock"
                           style={styles.icon}
                         />
-                        <Text style={styles.txtServices}>
-                          {e.horarios}
-                        </Text>
+                        <Text style={styles.txtServices}>{e.horarios}</Text>
                       </View>
                     </Text>
                     {e.Servicios.map((s) => {
@@ -253,7 +268,5 @@ const CompaniesBySport = ({ navigation }) => {
     </View>
   );
 };
-
-
 
 export default CompaniesBySport;
