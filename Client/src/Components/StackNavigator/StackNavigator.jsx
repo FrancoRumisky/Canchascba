@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Image,View,Text } from "react-native";
 // Imports Components
 import Home from "../Home/Home";
+import Datepicker from "../DatePicker/DatePicker";
 import EmpresasXDeporte from "../EmpresasXDeporte/EmpresasXDeporte";
 import CanchasXEmpresaYDeporte from "../CanchasXEmpres&Deporte/CanchasXEmpresa&Deporte";
 import Map from "../Map/Map";
@@ -18,6 +19,7 @@ export default function StackNavigator() {
           }}
         >
           <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Datepicker" component={Datepicker} />
           <Stack.Screen name="EmpresasXDeporte" component={EmpresasXDeporte} />
           <Stack.Screen name="CanchasXEYD" component={CanchasXEmpresaYDeporte} />
           <Stack.Screen name="Map" component={Map} />

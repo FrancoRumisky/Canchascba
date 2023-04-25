@@ -90,7 +90,7 @@ const Home = ({ navigation }) => {
 
   const handleClick = (id) => {
     dispatch(getCompaniesBySport(id));
-    navigation.navigate("EmpresasXDeporte");
+    navigation.navigate("Datepicker");
   };
 
   return loading ? (
