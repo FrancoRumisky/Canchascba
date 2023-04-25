@@ -1,31 +1,31 @@
 
 [
     {
-      "fecha": "18/04/2023",
+      "fecha": "24/04/2023",
       "horaInicio":"22:30",
       "horaFin":"23:30",
       "estado":"Creada",
       "CanchaId": 1
     },{
-      "fecha": "18/04/2023",
+      "fecha": "24/04/2023",
       "horaInicio":"20:30",
       "horaFin":"21:30",
       "estado":"Creada",
       "CanchaId": 2
     },{
-      "fecha": "18/04/2023",
+      "fecha": "24/04/2023",
       "horaInicio":"18:30",
       "horaFin":"20:30",
       "estado":"Creada",
       "CanchaId": 4
     },{
-      "fecha": "18/04/2023",
+      "fecha": "24/04/2023",
       "horaInicio":"15:00",
       "horaFin":"16:00",
       "estado":"Creada",
       "CanchaId": 6
     },{
-      "fecha": "18/04/2023",
+      "fecha": "24/04/2023",
       "horaInicio":"18:00",
       "horaFin":"19:30",
       "estado":"Creada",

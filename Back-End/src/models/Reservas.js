@@ -14,11 +14,11 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       horaInicio: {
-        type: DataTypes.TIME,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       horaFin: {
-        type: DataTypes.TIME,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       estado: {
