@@ -9,6 +9,7 @@ import {
   GET_FIELDSBYCS,
   GET_UBI,
   FILTER_BY_LOCATION,
+  SET_DATE,
 } from "../constants";
 
 const initialState = {
@@ -22,6 +23,7 @@ const initialState = {
   company: {},
   fieldsByCS: [],
   ubicacion: [],
+  date: [],
   loading: false,
 };
 
@@ -41,7 +43,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allSports: action.payload,
-        loading:false,
+        loading: false,
       };
     case GET_SPORT:
       return {
@@ -58,7 +60,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         companiesBySport: action.payload,
         currentCompanies: action.payload,
-        loading:false,
+        loading: false,
       };
     case GET_COMPANIEBYID:
       return {
@@ -82,6 +84,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         companiesBySport: companiesFiltered,
+      };
+    case SET_DATE:
+      return {
+        ...state,
+        date: action.payload,
       };
     case "LOADING":
       return {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import DatePicker, { getToday } from "react-native-modern-datepicker";
+import { Button } from "@react-native-material/core";
 import { useDispatch, useSelector } from "react-redux";
-import { IconButton } from "@react-native-material/core";
 import {
   StyleSheet,
   Text,
@@ -14,7 +14,7 @@ import { useIsFocused } from "@react-navigation/native";
 import * as Location from "expo-location";
 import Icon from "@expo/vector-icons/MaterialIcons";
 //imports Redux
-import { getSports, getCompaniesBySport } from "../../redux/actions";
+import { setDate } from "../../redux/actions";
 //import globalvars
 import { Colors } from "../Styles/Colors";
 
@@ -32,28 +32,10 @@ const styles = StyleSheet.create({
     fontWeight: 700,
     fontSize: 25,
   },
-  image: {
-    margin: 10,
-  },
-  iconButtonSports: {
-    width: 130,
-    height: 130,
-    backgroundColor: "transparent",
-
-    borderRadius: 0,
-    shadowColor: "black",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.85,
-    shadowRadius: 3.84,
-
-    elevation: 4,
-  },
 });
 
-function Datepicker() {
+function Datepicker({ navigation }) {
+  const dispatch = useDispatch()
   const [selectedDate, setSelectedDate] = useState("");
 
   function nextMonthorYear(date) {
@@ -69,26 +51,56 @@ function Datepicker() {
     return nextYear + "/" + 1 + "/" + todayArr[2];
   }
 
+  const handlePress = () => {
+    dispatch(setDate(selectedDate));
+    navigation.navigate("EmpresasXDeporte");
+  };
+ 
+  const getHours = () => {
+    var today = new Date();
+    var options = { hour: "numeric", minute: "numeric" };
+    var horaInicio = today.toLocaleString("es", options);
+    var arrHora = horaInicio.split(":");
+    if (arrHora[1] > 30) {
+      return arrHora[0] + ":" + 30;
+    } else {
+      return arrHora[0];
+    }
+  };
+
+  const date = getToday() + " "+ getHours();
+
   console.log(selectedDate);
 
   return (
-    <DatePicker
-      options={{
-        backgroundColor: "#090C08",
-        textHeaderColor: "#FFA25B",
-        textDefaultColor: "#F6E7C1",
-        selectedTextColor: "#fff",
-        mainColor: "#F4722B",
-        textSecondaryColor: "#D6C7A1",
-        borderColor: "rgba(122, 146, 165, 0.1)",
-      }}
-      onSelectedChange={(date) => setSelectedDate(date)}
-      minuteInterval={30}
-      minimumDate={getToday()}
-      maximumDate={nextMonthorYear(getToday())}
-      selected={getToday()}
-      style={{ borderRadius: 10 }}
-    />
+    <View style={styles.container}>
+      <Text style={styles.title}>Selecciona una fecha y hora</Text>
+      <DatePicker
+        options={{
+          backgroundColor: Colors.black,
+          textHeaderColor: Colors.red,
+          textDefaultColor: "white",
+          selectedTextColor: "#fff",
+          mainColor: Colors.red,
+          textSecondaryColor: "gray",
+          borderColor: Colors.red,
+        }}
+        onSelectedChange={(date) => setSelectedDate(date)}
+        minuteInterval={30}
+        minimumDate={date}
+        maximumDate={nextMonthorYear(date)}
+        selected={date}
+        style={{ borderRadius: 10 }}
+      />
+      <Button
+        style={{ marginTop: 30 }}
+        uppercase={false}
+        color={Colors.black}
+        pressEffectColor={Colors.red}
+        onPress={() => handlePress()}
+        title="Seleccionar"
+      />
+    </View>
   );
 }
 

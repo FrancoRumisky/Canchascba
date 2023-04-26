@@ -8,7 +8,8 @@ import {
   GET_COMPANIEBYID,
   GET_FIELDSBYCS,
   GET_UBI,
-  FILTER_BY_LOCATION
+  FILTER_BY_LOCATION,
+  SET_DATE
 } from "../constants";
 // import axios from "axios"
 import { BACKEND_SERVER } from "@env";
@@ -112,6 +113,12 @@ export function getLocation() {
 export function setFilters(props) {
   return function (dispatch) {
     dispatch({type: FILTER_BY_LOCATION, payload: props});
+  };
+}
+
+export function setDate(props) {
+  return function (dispatch) {
+    dispatch({type: SET_DATE, payload: props});
   };
 }
 
