@@ -23,7 +23,7 @@ router.get("/", async (req, res) => {
         fieldIds
       );
 
-      if (!fieldsxcompany.length)
+      if (fieldsxcompany.length < 0 )
         return res.status(404).json({ error: "Not found" });
 
       return res.status(200).json(fieldsxcompany);
