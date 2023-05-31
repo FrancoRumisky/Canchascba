@@ -7,8 +7,8 @@ const CanchasXEmpresaYDeporte = () => {
   const fieldsByCS = useSelector((state) => state.fieldsByCS);
   const company = useSelector((state) => state.company);
 
-  // console.log(fieldsByCS);
-  // console.log(company);
+  console.log(fieldsByCS);
+  console.log(company);
 
   return (
     <View>

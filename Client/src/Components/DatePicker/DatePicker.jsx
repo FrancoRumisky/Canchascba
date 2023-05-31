@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
 function Datepicker({ navigation }) {
   const dispatch = useDispatch()
   const [selectedDate, setSelectedDate] = useState("");
+  const currentDate = useSelector((state) => state.date)
 
   function nextMonthorYear(date) {
     const today = date;
@@ -56,21 +57,20 @@ function Datepicker({ navigation }) {
     navigation.navigate("EmpresasXDeporte");
   };
  
-  const getHours = () => {
-    var today = new Date();
-    var options = { hour: "numeric", minute: "numeric" };
-    var horaInicio = today.toLocaleString("es", options);
-    var arrHora = horaInicio.split(":");
-    if (arrHora[1] > 30) {
-      return arrHora[0] + ":" + 30;
-    } else {
-      return arrHora[0];
-    }
-  };
+  // const getHours = () => {
+  //   var today = new Date();
+  //   var options = { hour: "numeric", minute: "numeric" };
+  //   var horaInicio = today.toLocaleString("es", options);
+  //   var arrHora = horaInicio.split(":");
+  //   if (arrHora[1] > 30) {
+  //     return arrHora[0] + ":" + 30;
+  //   } else {
+  //     return arrHora[0];
+  //   }
+  // };
 
-  const date = getToday() + " "+ getHours();
+  // const date = getToday() + " "+ getHours();
 
-  console.log(selectedDate);
 
   return (
     <View style={styles.container}>
@@ -87,9 +87,9 @@ function Datepicker({ navigation }) {
         }}
         onSelectedChange={(date) => setSelectedDate(date)}
         minuteInterval={30}
-        minimumDate={date}
-        maximumDate={nextMonthorYear(date)}
-        selected={date}
+        minimumDate={getToday()}
+        maximumDate={nextMonthorYear(getToday())}
+        selected={getToday()}
         style={{ borderRadius: 10 }}
       />
       <Button

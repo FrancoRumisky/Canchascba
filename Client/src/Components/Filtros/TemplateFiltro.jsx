@@ -6,6 +6,7 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import { Colors } from "../Styles/Colors";
 import DeporteFiltro from "./DeporteFiltro";
 import UbicacionFiltro from "./UbicacionFiltro";
+import ServicioFiltro from "./ServiciosFiltro";
 
 const styles = StyleSheet.create({
   centeredView: {
@@ -50,7 +51,7 @@ function TemplateFiltro({ title, name }) {
   const [filter, setFilter] = useState({
     Ubicacion: <UbicacionFiltro />,
     Deporte: <DeporteFiltro />,
-    Servicios: "",
+    Servicios: <ServicioFiltro />,
   });
 
   // useEffect(() => {

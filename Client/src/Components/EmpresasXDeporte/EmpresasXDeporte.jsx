@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
 const CompaniesBySport = ({ navigation }) => {
   const companiesBySport = useSelector((state) => state.companiesBySport);
   const loading = useSelector((state) => state.loading);
+  const currentDate = useSelector((state) => state.date)
   const dispatch = useDispatch();
 
   useFocusEffect(
@@ -91,13 +92,20 @@ const CompaniesBySport = ({ navigation }) => {
     }, [])
   );
 
-  var today = new Date();
-      var now = today.toLocaleString();
-      const fecha = now.split(" ")[0];
-      const horaInicio = now.split(" ")[1];
-      const horaFin = horaInicio;
+  var fecha = currentDate.split(" ")[0]
+  var horaInicio = currentDate.split(" ")[1]
+  var horaFin = parseInt(horaInicio) >= 22 ? "00:00" : parseInt(horaInicio) + 2 + ":00" 
+
+  console.log("fecha:",fecha, "horaInicio:",horaInicio, "horaFin:",horaFin)
+
+  // var today = new Date();
+  //     var now = today.toLocaleString();
+  //     const fecha = now.split(" ")[0];
+  //     const horaInicio = now.split(" ")[1];
+  //     const horaFin = horaInicio;
 
   const handleClick = (idcompany, idsport) => {
+    console.log(fecha)
     dispatch(getFieldsByCompanyAndSport(idcompany, idsport, fecha, horaInicio, horaFin));
     dispatch(getCompanieById(idcompany));
     navigation.navigate("CanchasXEYD");

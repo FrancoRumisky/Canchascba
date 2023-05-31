@@ -36,7 +36,7 @@ const findCompaniesXSport = async (idSport) => {
           where: { id: idSport },
           through: { attributes: [] },
         },
-        { model: Servicios, attributes: { exclude: ["EmpresaId"] } },
+        { model: Servicios, attributes: { exclude: ["EmpresaId", "id"] } },
         {
           model: Canchas,
           include: [
