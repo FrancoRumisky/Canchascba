@@ -23,7 +23,7 @@ server.use(
   cors({
     origin: [
       "http://localhost:19006",
-      "https://canchascba-production.up.railway.app/",
+      "https://ep-late-union-25999705.us-east-2.aws.neon.fl0.io/",
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"],
