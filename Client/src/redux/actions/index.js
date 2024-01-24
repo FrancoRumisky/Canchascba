@@ -9,6 +9,7 @@ import {
   GET_FIELDSBYCS,
   GET_UBI,
   FILTER_BY_LOCATION,
+  FILTER_BY_SERVICES,
   SET_DATE
 } from "../constants";
 // import axios from "axios"
@@ -113,6 +114,12 @@ export function getLocation() {
 export function setFilters(props) {
   return function (dispatch) {
     dispatch({type: FILTER_BY_LOCATION, payload: props});
+  };
+}
+
+export function servicesFilters(props) {
+  return function (dispatch) {
+    dispatch({type: FILTER_BY_SERVICES, payload: props});
   };
 }
 

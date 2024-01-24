@@ -9,6 +9,7 @@ import {
   GET_FIELDSBYCS,
   GET_UBI,
   FILTER_BY_LOCATION,
+  FILTER_BY_SERVICES,
   SET_DATE,
 } from "../constants";
 
@@ -85,6 +86,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         companiesBySport: companiesFiltered,
       };
+    case FILTER_BY_SERVICES:
+      const servicesCompanies =  state.currentCompanies.filter(e => e.Servicios.include())
+      return {
+        ...state,
+
+      }
     case SET_DATE:
       return {
         ...state,

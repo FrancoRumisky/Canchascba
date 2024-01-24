@@ -25,12 +25,14 @@ const styles = StyleSheet.create({
     // backgroundColor: "lightgray",
     alignItems: "center",
     justifyContent: "center",
+    margin:20
   },
   title: {
     marginTop: -60,
     marginBottom: 30,
     fontWeight: 700,
     fontSize: 25,
+    color:Colors.red
   },
 });
 
@@ -77,9 +79,9 @@ function Datepicker({ navigation }) {
       <Text style={styles.title}>Selecciona una fecha y hora</Text>
       <DatePicker
         options={{
-          backgroundColor: Colors.black,
+          backgroundColor: "white",
           textHeaderColor: Colors.red,
-          textDefaultColor: "white",
+          textDefaultColor: Colors.black,
           selectedTextColor: "#fff",
           mainColor: Colors.red,
           textSecondaryColor: "gray",
@@ -90,13 +92,13 @@ function Datepicker({ navigation }) {
         minimumDate={getToday()}
         maximumDate={nextMonthorYear(getToday())}
         selected={getToday()}
-        style={{ borderRadius: 10 }}
+        style={{ borderRadius: 10 , borderWidth:1, borderColor: Colors.red, }}
       />
       <Button
-        style={{ marginTop: 30 }}
+        style={{ marginTop: 20 }}
         uppercase={false}
-        color={Colors.black}
-        pressEffectColor={Colors.red}
+        color={Colors.red}
+        
         onPress={() => handlePress()}
         title="Seleccionar"
       />

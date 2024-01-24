@@ -9,3 +9,4 @@ export const GET_UBI = "GET_UBI";
 export const FILTER_BY_LOCATION = "FILTER_BY_LOCATION";
 export const GET_COMPANIES = "GET_COMPANIES";
 export const SET_DATE = "SET_DATE";
+export const FILTER_BY_SERVICES = "FILTER_BY_SERVICES";
