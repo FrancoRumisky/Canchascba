@@ -7,7 +7,7 @@
     "latitud":"-31.40335999028914",
     "longitud":"-64.15985997959964",
     "horarios": "11:00 a 02:00",
-    "imagen":"urlimagen.jpg"
+    "imagen":"https://lh3.googleusercontent.com/p/AF1QipOz2g4ilgQbofriTnwyQCLqvtAAL3nLCTHQozxg=s680-w680-h510"
   },
   {
     "nombre": "Empresa 4",
@@ -17,7 +17,7 @@
     "latitud":"-31.40335999028914",
     "longitud":"-64.15985997959964",
     "horarios": "11:00 a 02:00",
-    "imagen":"urlimagen.jpg"
+    "imagen":"https://lh3.googleusercontent.com/p/AF1QipNTdIKz65LShl3rELyfFabE58OWfY7Ueym8h99M=s680-w680-h510"
   },
   {
     "nombre": "Empresa 2",
@@ -27,7 +27,7 @@
     "latitud":"-31.388620173140662",
     "longitud":"-64.1306774899709",
     "horarios": "18:00 a 02:00",
-    "imagen":"urlimagen.jpg"
+    "imagen":"https://lh3.googleusercontent.com/p/AF1QipN4rXpCcjiZT7RH8UAJtk5sTOopLHyxWWT664Fa=s680-w680-h510"
   },
   {
     "nombre": "Empresa 3",
@@ -37,6 +37,6 @@
     "latitud":"-31.397773460384684",
     "longitud":"-64.15831707364927",
     "horarios": "09:00 a 13:00 - 17:00 a 00:00",
-    "imagen":"urlimagen.jpg"
+    "imagen":"https://lh3.googleusercontent.com/p/AF1QipPKeWZEr7JSygAUiSuprBKFHQzuZdqtv9-zsicA=s680-w680-h510"
   }
 ]
