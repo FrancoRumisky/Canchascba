@@ -1,6 +1,5 @@
 // Imports React Native
 import { createStackNavigator } from "@react-navigation/stack";
-import { Image,View,Text } from "react-native";
 // Imports Components
 import Home from "../Home/Home";
 import Datepicker from "../DatePicker/DatePicker";

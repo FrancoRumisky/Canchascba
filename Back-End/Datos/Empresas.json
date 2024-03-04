@@ -6,7 +6,8 @@
     "ciudad":"Córdoba",
     "latitud":"-31.40335999028914",
     "longitud":"-64.15985997959964",
-    "horarios": "11:00 a 02:00"
+    "horarios": "11:00 a 02:00",
+    "imagen":"urlimagen.jpg"
   },
   {
     "nombre": "Empresa 4",
@@ -15,7 +16,8 @@
     "ciudad":"Mendoza",
     "latitud":"-31.40335999028914",
     "longitud":"-64.15985997959964",
-    "horarios": "11:00 a 02:00"
+    "horarios": "11:00 a 02:00",
+    "imagen":"urlimagen.jpg"
   },
   {
     "nombre": "Empresa 2",
@@ -24,7 +26,8 @@
     "ciudad":"Córdoba",
     "latitud":"-31.388620173140662",
     "longitud":"-64.1306774899709",
-    "horarios": "18:00 a 02:00"
+    "horarios": "18:00 a 02:00",
+    "imagen":"urlimagen.jpg"
   },
   {
     "nombre": "Empresa 3",
@@ -33,6 +36,7 @@
     "ciudad":"Córdoba",
     "latitud":"-31.397773460384684",
     "longitud":"-64.15831707364927",
-    "horarios": "09:00 a 13:00 - 17:00 a 00:00"
+    "horarios": "09:00 a 13:00 - 17:00 a 00:00",
+    "imagen":"urlimagen.jpg"
   }
 ]

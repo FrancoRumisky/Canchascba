@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "@react-native-material/core";
-import { getCompaniesBySport } from "../../redux/actions";
+import { getCompaniesBySport, getIdSport } from "../../redux/actions";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import IconMaterial from "@expo/vector-icons/MaterialIcons";
 import { Colors } from "../Styles/Colors";
@@ -24,12 +24,13 @@ function DeporteFiltro() {
 
   const handlePress = (id) => {
     dispatch(getCompaniesBySport(id));
+    dispatch(getIdSport(id));
   };
 
   return (
     <View style={styles.modalView}>
       <View style={styles.modalText}>
-        {sports.length > 0 && sports.map((e) => {
+        {sports?.length > 0 && sports.map((e) => {
           return (
             <View key={e.id} style={styles.icon}>
               <Button

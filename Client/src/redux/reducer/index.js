@@ -5,6 +5,7 @@ import {
   GET_SPORT,
   GET_COMPANIES,
   GET_COMPANIESBYSPORT,
+  GET_IDSPORT,
   GET_COMPANIEBYID,
   GET_FIELDSBYCS,
   GET_UBI,
@@ -18,6 +19,7 @@ const initialState = {
   user: {},
   allSports: [],
   sport: {},
+  idSport:"",
   companies: [],
   currentCompanies: [],
   companiesBySport: [],
@@ -62,6 +64,11 @@ const reducer = (state = initialState, action) => {
         companiesBySport: action.payload,
         currentCompanies: action.payload,
         loading: false,
+      };
+      case GET_IDSPORT:
+      return {
+        ...state,
+        idSport: action.payload,
       };
     case GET_COMPANIEBYID:
       return {

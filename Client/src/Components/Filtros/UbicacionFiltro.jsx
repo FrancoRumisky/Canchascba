@@ -29,14 +29,13 @@ function UbicacionFiltro() {
   const [checkboxState, setCheckboxState] = useState({});
   const [filter, setFilter] = useState([]);
 
-  const currentSport = companiesBySport[0].Deportes[0].id;
+  const currentSport = companiesBySport[0]?.Deportes[0]?.id;
 
   useEffect(() => {
     dispatch(getLocation());
   }, []);
 
   useEffect(() => {
-    console.log(filter);
     if (Object.entries(checkboxState).length > 0) {
       if (filter.length > 0) {
         dispatch(setFilters(filter));

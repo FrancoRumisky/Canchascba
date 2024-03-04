@@ -10,12 +10,13 @@ import {
   GET_UBI,
   FILTER_BY_LOCATION,
   FILTER_BY_SERVICES,
-  SET_DATE
+  SET_DATE,
+  GET_IDSPORT
 } from "../constants";
 // import axios from "axios"
 import { BACKEND_SERVER } from "@env";
 
-const server = BACKEND_SERVER || "http://localhost:3001";
+const server = BACKEND_SERVER || "https://canchascba-dev-brdn.2.us-1.fl0.io";
 
 export function getUsers(id) {
   if (id) {
@@ -126,6 +127,12 @@ export function servicesFilters(props) {
 export function setDate(props) {
   return function (dispatch) {
     dispatch({type: SET_DATE, payload: props});
+  };
+}
+
+export function getIdSport(id) {
+  return function (dispatch) {
+    dispatch({type: GET_IDSPORT, payload: id});
   };
 }
 

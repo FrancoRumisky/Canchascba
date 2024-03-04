@@ -5,12 +5,13 @@ import { Image, View, Text } from "react-native";
 // Imports Redux
 import { Provider } from "react-redux";
 import configureStore from "./src/redux/store";
-// Imports Components
+//Imports Components
 import StackNavigator from "./src/Components/StackNavigator/StackNavigator";
 import Contacto from "./src/Components/Contacto/Contacto";
 import Perfil from "./src/Components/Perfil/Perfil";
 //import Icons
-import Ionicons from "@expo/vector-icons/Ionicons";
+import Ionicons from 'react-native-vector-icons/Ionicons';
+// import Ionicons from "@expo/vector-icons/MaterialCommunityIcons";
 //import Styles
 import { Colors } from "./src/Components/Styles/Colors";
 
@@ -36,11 +37,11 @@ export default function App() {
               let iconName;
 
               if (route.name === "Inicio") {
-                iconName = focused ? "ios-home" : "ios-home-outline";
+                iconName = focused ? "home-outline" : "home-sharp";
               } else if (route.name === "Perfil") {
-                iconName = focused ? "ios-person" : "ios-person-outline";
+                iconName = focused ? "person-outline" : "person";
               } else {
-                iconName = focused ? "ios-mail-open" : "ios-mail-outline";
+                iconName = focused ? "call-outline" : "call";
               }
 
               // You can return any component that you like here!
@@ -74,6 +75,6 @@ export default function App() {
           <Tab.Screen name="Contacto" component={Contacto} />
         </Tab.Navigator>
       </NavigationContainer>
-    </Provider>
+   </Provider>
   );
 }

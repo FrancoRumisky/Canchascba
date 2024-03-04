@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   title: {
     marginTop: -60,
     marginBottom: 30,
-    fontWeight: 700,
+    // fontWeight: 700,
     fontSize: 25,
     color:Colors.red
   },

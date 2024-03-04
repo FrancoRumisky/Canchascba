@@ -24,6 +24,7 @@ import { Colors } from "../Styles/Colors";
 //Imports Components
 import Filtros from "../Filtros/Filtros";
 import { useFocusEffect } from "@react-navigation/native";
+import {ErrorCancha} from "../errorCancha/ErrorCancha.jsx"
 
 //screen dimensions
 const screenHeight = Dimensions.get("window").height;
@@ -88,15 +89,16 @@ const CompaniesBySport = ({ navigation }) => {
 
   useFocusEffect(
     React.useCallback(() => {
-      dispatch(getCompanies());
+      console.log("Holaa")
+      // dispatch(getCompanies());
     }, [])
-  );
+  );  
 
-  var fecha = currentDate.split(" ")[0]
-  var horaInicio = currentDate.split(" ")[1]
+  var fecha = currentDate?.split(" ")[0]
+  var horaInicio = currentDate?.split(" ")[1]
   var horaFin = parseInt(horaInicio) >= 22 ? "00:00" : parseInt(horaInicio) + 2 + ":00" 
 
-  console.log("fecha:",fecha, "horaInicio:",horaInicio, "horaFin:",horaFin)
+  console.log(companiesBySport)
 
   // var today = new Date();
   //     var now = today.toLocaleString();
@@ -124,7 +126,7 @@ const CompaniesBySport = ({ navigation }) => {
     </View>
   ) : companiesBySport.length === 0 ? (
     <View>
-      <Text>No Hay Canchas Para Mostrar</Text>
+      <ErrorCancha />
     </View>
   ) : (
     <View style={{ height: screenHeight }}>

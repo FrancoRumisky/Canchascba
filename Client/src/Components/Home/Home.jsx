@@ -14,7 +14,7 @@ import { useIsFocused } from "@react-navigation/native";
 import * as Location from "expo-location";
 import Icon from "@expo/vector-icons/MaterialIcons";
 //imports Redux
-import { getSports, getCompaniesBySport } from "../../redux/actions";
+import { getSports, getCompaniesBySport, getIdSport } from "../../redux/actions";
 //import globalvars
 import { Colors } from "../Styles/Colors";
 
@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
   title: {
     marginTop: -60,
     marginBottom: 30,
-    fontWeight: 700,
-    fontSize: 25,
+    // fontWeight: 700,
+    fontSize: 28,
   },
   image: {
     margin: 10,
@@ -90,6 +90,7 @@ const Home = ({ navigation }) => {
 
   const handleClick = (id) => {
     dispatch(getCompaniesBySport(id));
+    dispatch(getIdSport(id));
     navigation.navigate("Datepicker");
   };
 

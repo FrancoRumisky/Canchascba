@@ -17,11 +17,11 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      codigoPostal:{
+      codigoPostal: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      ciudad:{
+      ciudad: {
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -36,6 +36,12 @@ module.exports = (sequelize) => {
       horarios: {
         type: DataTypes.STRING,
         allowNull: false,
+      },
+      imagen: {
+        type: DataTypes.STRING,
+        validate: {
+          isUrl: true,
+        },
       },
     },
     {
