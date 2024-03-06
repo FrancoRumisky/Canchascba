@@ -17,14 +17,14 @@ import {
   getFieldsByCompanyAndSport,
   getCompanieById,
   getCompanies,
-} from "../../redux/actions";
+} from "../../redux/actions/index.js";
 //Imports Styles
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
-import { Colors } from "../Styles/Colors";
+import { Colors } from "../Styles/Colors.js";
 //Imports Components
 import Filtros from "../Filtros/Filtros";
 import { useFocusEffect } from "@react-navigation/native";
-import {ErrorCancha} from "../errorCancha/ErrorCancha.jsx"
+import { ErrorCancha } from "./ErrorCancha.jsx";
 
 //screen dimensions
 const screenHeight = Dimensions.get("window").height;
@@ -84,21 +84,22 @@ const styles = StyleSheet.create({
 const CompaniesBySport = ({ navigation }) => {
   const companiesBySport = useSelector((state) => state.companiesBySport);
   const loading = useSelector((state) => state.loading);
-  const currentDate = useSelector((state) => state.date)
+  const currentDate = useSelector((state) => state.date);
   const dispatch = useDispatch();
 
   useFocusEffect(
     React.useCallback(() => {
-      console.log("Holaa")
+      console.log("Holaa");
       // dispatch(getCompanies());
     }, [])
-  );  
+  );
 
-  var fecha = currentDate?.split(" ")[0]
-  var horaInicio = currentDate?.split(" ")[1]
-  var horaFin = parseInt(horaInicio) >= 22 ? "00:00" : parseInt(horaInicio) + 2 + ":00" 
+  var fecha = currentDate?.split(" ")[0];
+  var horaInicio = currentDate?.split(" ")[1];
+  var horaFin =
+    parseInt(horaInicio) >= 22 ? "00:00" : parseInt(horaInicio) + 2 + ":00";
 
-  console.log(companiesBySport)
+  console.log(companiesBySport);
 
   // var today = new Date();
   //     var now = today.toLocaleString();
@@ -107,8 +108,10 @@ const CompaniesBySport = ({ navigation }) => {
   //     const horaFin = horaInicio;
 
   const handleClick = (idcompany, idsport) => {
-    console.log(fecha)
-    dispatch(getFieldsByCompanyAndSport(idcompany, idsport, fecha, horaInicio, horaFin));
+    console.log(fecha);
+    dispatch(
+      getFieldsByCompanyAndSport(idcompany, idsport, fecha, horaInicio, horaFin)
+    );
     dispatch(getCompanieById(idcompany));
     navigation.navigate("CanchasXEYD");
   };

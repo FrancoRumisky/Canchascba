@@ -1,0 +1,17 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/COOPBL.TTF",
+      "sha1": "7fb4a960084a495a65ae7b1edb59142cb31b2e1f"
+    },
+    {
+      "path": "assets/fonts/cs_regular.ttf",
+      "sha1": "33c385fd31f41bde9995eadc9d8dc14bc8182f28"
+    },
+    {
+      "path": "assets/fonts/MATURASC.TTF",
+      "sha1": "3f3f5e77146f7ab00ab137e52fbeedaa82755aba"
+    }
+  ]
+}
