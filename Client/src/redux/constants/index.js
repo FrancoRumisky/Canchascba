@@ -11,3 +11,4 @@ export const GET_COMPANIES = "GET_COMPANIES";
 export const SET_DATE = "SET_DATE";
 export const FILTER_BY_SERVICES = "FILTER_BY_SERVICES";
 export const GET_IDSPORT = "GET_IDSPORT"
+export const USER_AUTH = "USER_AUTH"

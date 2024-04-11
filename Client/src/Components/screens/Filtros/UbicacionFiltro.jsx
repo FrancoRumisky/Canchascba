@@ -6,9 +6,9 @@ import {
   getLocation,
   setFilters,
   getCompaniesBySport,
-} from "../../redux/actions";
+} from "../../../redux/actions"
 import IconMaterial from "@expo/vector-icons/MaterialIcons";
-import { Colors } from "../Styles/Colors";
+import { Colors } from "../../Styles/Colors"
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 const styles = StyleSheet.create({

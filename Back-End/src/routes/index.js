@@ -4,6 +4,7 @@ const deportes = require("./deportes");
 const canchas = require("./canchas");
 const empresas= require("./empresas");
 const reservas = require("./reservas");
+const login = require("./login");
 
 const router = Router();
 
@@ -16,6 +17,8 @@ router.use("/canchas", canchas);
 router.use("/empresas", empresas);
 
 router.use("/reservas", reservas);
+
+router.use("/login", login)
 
 
 

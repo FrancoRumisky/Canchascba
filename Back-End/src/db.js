@@ -12,9 +12,9 @@ const sequelize = new Sequelize(
   {
     logging: false,
     native: false,
-    dialectOptions:{
-      ssl:true,
-    }
+    // dialectOptions:{
+    //   ssl:true,
+    // }
   }
 );
 const basename = path.basename(__filename);

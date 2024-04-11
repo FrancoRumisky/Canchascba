@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Modal } from "react-native";
 import { useSelector } from "react-redux";
 import { Button, Pressable } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
-import { Colors } from "../Styles/Colors";
+import { Colors } from "../../Styles/Colors";
 import DeporteFiltro from "./DeporteFiltro";
 import UbicacionFiltro from "./UbicacionFiltro";
 import ServicioFiltro from "./ServiciosFiltro";

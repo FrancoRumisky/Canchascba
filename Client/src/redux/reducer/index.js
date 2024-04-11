@@ -12,9 +12,11 @@ import {
   FILTER_BY_LOCATION,
   FILTER_BY_SERVICES,
   SET_DATE,
+  USER_AUTH
 } from "../constants";
 
 const initialState = {
+  userAuth : {},
   allusers: [],
   user: {},
   allSports: [],
@@ -32,6 +34,11 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case USER_AUTH:
+    return {
+      ...state,
+      userAuth:action.payload
+    };
     case GET_USERS:
       return {
         ...state,

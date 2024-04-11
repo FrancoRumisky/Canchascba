@@ -2,10 +2,10 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "@react-native-material/core";
-import { getCompaniesBySport, getIdSport } from "../../redux/actions";
+import { getCompaniesBySport, getIdSport } from "../../../redux/actions"
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import IconMaterial from "@expo/vector-icons/MaterialIcons";
-import { Colors } from "../Styles/Colors";
+import { Colors } from "../../Styles/Colors"
 
 const styles = StyleSheet.create({
   modalText: {

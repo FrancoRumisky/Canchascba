@@ -22,7 +22,7 @@ import {
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import { Colors } from "../Styles/Colors.js";
 //Imports Components
-import Filtros from "../Filtros/Filtros";
+import Filtros from "./Filtros/Filtros.jsx";
 import { useFocusEffect } from "@react-navigation/native";
 import { ErrorCancha } from "./ErrorCancha.jsx";
 

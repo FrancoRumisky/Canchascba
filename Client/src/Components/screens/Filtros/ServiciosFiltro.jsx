@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "@react-native-material/core";
-import { getCompaniesBySport, setFilters } from "../../redux/actions";
+import { getCompaniesBySport, setFilters } from "../../../redux/actions";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import IconMaterial from "@expo/vector-icons/MaterialIcons";
-import { Colors } from "../Styles/Colors";
+import { Colors } from "../../Styles/Colors"
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { useEffect } from "react";
 

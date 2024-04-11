@@ -11,12 +11,33 @@ import {
   FILTER_BY_LOCATION,
   FILTER_BY_SERVICES,
   SET_DATE,
-  GET_IDSPORT
+  GET_IDSPORT,
+  USER_AUTH
 } from "../constants";
-// import axios from "axios"
+
 import { BACKEND_SERVER } from "@env";
 
 const server = BACKEND_SERVER || "https://canchascba-dev-brdn.2.us-1.fl0.io";
+
+
+export function login(data) {
+  return function (dispatch) {
+    fetch(server + `/login`, {
+      method: 'POST', 
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data) 
+    }).then((res)=>res.json())
+    .then((res) => fetch(server + `/login/private`,{
+      method: 'GET', 
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + res
+      },
+    })).then((data) => {dispatch({type:USER_AUTH, payload:data})})
+  }
+}
 
 export function getUsers(id) {
   if (id) {
