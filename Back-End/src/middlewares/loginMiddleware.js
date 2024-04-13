@@ -14,9 +14,9 @@ router.post("/", async (req, res, next) => {
   try {
     const userLog = await UserController.findByUserAndPass(user, pass);
 
-    if (!userLog) return res.status(404).json({ error: "Email or Password wrong" });
+    if (!userLog)
+      return res.status(404).json({ error: "Email or Password wrong" });
 
-    console.log(userLog);
     const { id: sub, nombre: name, RolUsuarioId: rol } = userLog;
 
     const token = jwt.sign(
@@ -24,12 +24,15 @@ router.post("/", async (req, res, next) => {
         sub,
         name,
         rol,
-        exp: Date.now() + 43200000,
+        exp: Date.now() + 3600000,
       },
       secret
     );
+    res.cookie("jwt", token);
 
-    return res.send({ token });
+    return res
+      .status(200)
+      .json({ ok: true, data: userLog, message: "Inicio de sesion exitoso" });
   } catch (error) {
     console.error(
       "GET /users/LoginUser UserController.findByUserAndPass error"
@@ -44,6 +47,8 @@ router.get("/public", (req, res) => {
 
 router.get("/private", (req, res) => {
   try {
+    const tooken = req.cookies;
+    console.log(tooken);
     const token = req.headers.authorization.split(" ")[1];
     const payload = jwt.verify(token, secret);
 

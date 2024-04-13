@@ -21,21 +21,14 @@ const server = BACKEND_SERVER || "https://canchascba-dev-brdn.2.us-1.fl0.io";
 
 
 export function login(data) {
-  return function (dispatch) {
-    fetch(server + `/login`, {
+  return  function (dispatch) {
+     fetch(server + `/login`, {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data) 
-    }).then((res)=>res.json())
-    .then((res) => fetch(server + `/login/private`,{
-      method: 'GET', 
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + res
-      },
-    })).then((data) => {dispatch({type:USER_AUTH, payload:data})})
+    }).then((data) => {console.log(data)})
   }
 }
 
