@@ -6,10 +6,12 @@ import { Colors } from "../Styles/Colors";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import { login } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
+import { useIsFocused } from "@react-navigation/native";
 
 //! corregir fuentes
 
 const Login = ({ navigation }) => {
+  const isFocused = useIsFocused();
   const [loading, setLoading] = React.useState(false);
   const [SecureText, setSecureText] = React.useState(true);
   const dispatch = useDispatch();
@@ -32,22 +34,29 @@ const Login = ({ navigation }) => {
     Object.hasOwn(useAuth, "ok")
       ? setTimeout(() => {
           handlePress();
-        }, 2000)
+        }, 1000)
       : setLoading(false);
-
-    console.log(useAuth);
-  }, [useAuth]);
+  }, [useAuth, isFocused]);
 
   return (
-    <View style={styles.container}> 
+    <View style={styles.container}>
       <ImageBackground
         source={{
           uri: "https://static.vecteezy.com/system/resources/previews/002/082/394/original/abstract-header-with-red-and-black-layers-above-each-other-modern-design-banner-for-your-business-illustration-with-oblique-stripes-and-lines-vector.jpg",
         }}
         resizeMode="cover"
-        style={{flex:1, justifyContent: "center"}}
+        style={{ flex: 1, justifyContent: "center" }}
       >
-        <Image style={{width:150, height:150, display:"flex", alignSelf:"center", marginTop:0}} source={require("../../../assets/Logo.png")} />
+        <Image
+          style={{
+            width: 150,
+            height: 150,
+            display: "flex",
+            alignSelf: "center",
+            marginTop: 0,
+          }}
+          source={require("../../../assets/Logo.png")}
+        />
         <TextInput
           color={Colors.black}
           value={data.user}

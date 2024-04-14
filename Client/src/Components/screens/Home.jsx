@@ -14,7 +14,11 @@ import { useIsFocused } from "@react-navigation/native";
 import * as Location from "expo-location";
 import Icon from "@expo/vector-icons/MaterialIcons";
 //imports Redux
-import { getSports, getCompaniesBySport, getIdSport } from "../../redux/actions";
+import {
+  getSports,
+  getCompaniesBySport,
+  getIdSport,
+} from "../../redux/actions";
 //import globalvars
 import { Colors } from "../Styles/Colors";
 
@@ -83,9 +87,7 @@ const Home = ({ navigation }) => {
   }, []);
 
   useEffect(() => {
-    if (isFocused) {
-      dispatch(getSports());
-    }
+    dispatch(getSports());
   }, [dispatch, isFocused]);
 
   const handleClick = (id) => {

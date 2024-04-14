@@ -11,7 +11,7 @@ const Splash = ({navigation}) => {
         React.useCallback(() => {
           setTimeout(() => {
             navigation.navigate("Login");
-          }, 5000);
+          }, 4000);
         }, [])
       );  
 
