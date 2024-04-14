@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import { Colors } from "./Colors";
 
 const styles = StyleSheet.create({
@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     fontFamily: "MATURASC",
     backgroundColor: Colors.black,
-  }
+  },
 });
 
 const imageBackground = StyleSheet.create({

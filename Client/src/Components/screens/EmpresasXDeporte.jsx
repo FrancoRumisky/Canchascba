@@ -34,7 +34,6 @@ const screenWidth = Dimensions.get("window").width;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: Colors.black,
     alignItems: "center",
     justifyContent: "center",
     marginBottom: "32%",
@@ -99,14 +98,6 @@ const CompaniesBySport = ({ navigation }) => {
   var horaFin =
     parseInt(horaInicio) >= 22 ? "00:00" : parseInt(horaInicio) + 2 + ":00";
 
-  console.log(companiesBySport);
-
-  // var today = new Date();
-  //     var now = today.toLocaleString();
-  //     const fecha = now.split(" ")[0];
-  //     const horaInicio = now.split(" ")[1];
-  //     const horaFin = horaInicio;
-
   const handleClick = (idcompany, idsport) => {
     console.log(fecha);
     dispatch(
@@ -116,12 +107,6 @@ const CompaniesBySport = ({ navigation }) => {
     navigation.navigate("CanchasXEYD");
   };
 
-  // if (companiesBySport.length === 0)
-  //   return (
-  //     <View>
-  //       <Text>No Hay Canchas Para Mostrar</Text>
-  //     </View>
-  //   );
 
   return loading ? (
     <View style={styles.loadingcontainer}>

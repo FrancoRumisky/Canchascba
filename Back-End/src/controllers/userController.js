@@ -28,7 +28,7 @@ const findByUserAndPass = async (user, pass) => {
   try {
     return Usuarios.findOne({
       where: {
-        email: user,
+        email:{[Op.iLike]:user} ,
         password: pass,
       },
     });

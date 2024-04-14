@@ -9,7 +9,9 @@ router.post("/", async (req, res, next) => {
   const { user, pass } = req.body;
 
   if (!user || !pass)
-    return res.status(400).send("Username and password are required");
+    return res
+      .status(400)
+      .json({ error: "Username and password are required" });
 
   try {
     const userLog = await UserController.findByUserAndPass(user, pass);

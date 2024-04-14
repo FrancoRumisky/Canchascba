@@ -28,7 +28,7 @@ export function login(data) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data) 
-    }).then((data) => {console.log(data)})
+    }).then((req)=> req.json()).then((res)=> dispatch({type:USER_AUTH, payload:res}))
   }
 }
 
