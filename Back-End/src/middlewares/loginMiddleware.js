@@ -48,7 +48,7 @@ router.post("/", async (req, res, next) => {
 router.put("/change-password", async (req, res) => {
   const { user } = req.body;
   if (!user) {
-    return res.status(400).json({ error: "Email is required" });
+    return res.status(400).json({ message: "Email is required" });
   }
   const message = "Te enviamos un link a tu correo electronico";
   let verificationToken;
@@ -62,7 +62,7 @@ router.put("/change-password", async (req, res) => {
     await UserController.setUserResetToken(id, token);
   } catch (error) {
     emailStatus = error;
-    return res.status(401).json({ error: "user not found" });
+    return res.status(401).json({ message: "user not found" });
   }
 
   //TODO: sendEmail
@@ -75,7 +75,7 @@ router.put("/change-password", async (req, res) => {
     });
   } catch (error) {
     emailStatus = error;
-    return res.status(400).json({ error: error.message });
+    return res.status(400).json({ message: error.message });
   }
 
   res.status(200).json({ message, info: emailStatus });
@@ -86,7 +86,7 @@ router.put("/new-password", async (req, res) => {
   const resetToken = req.headers.reset;
 
   if (!(resetToken && newPassword)) {
-    res.status(400).json({ error: "all fields are required" });
+    res.status(400).json({ message: "all fields are required" });
   }
 
   let jwtPayload;
@@ -101,7 +101,7 @@ router.put("/new-password", async (req, res) => {
     console.log(Date.now());
     await UserController.setNewUserPassword(resetToken, newPassword);
   } catch (error) {
-    return res.status(401).json({ error: error.message });
+    return res.status(401).json({ message: error.message });
   }
   res.json({ message: "password changed" });
 });

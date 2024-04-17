@@ -68,7 +68,7 @@ const ForgotPassword = () => {
               style={{ margin: 16 }}
             />
 
-            {useAuth.error ? <Text> {useAuth.error} </Text> : ""}
+            {useAuth.message ? <Text> {useAuth.error} </Text> : ""}
             <Button
               color={Colors.red}
               title="Recuperar contraseña"
