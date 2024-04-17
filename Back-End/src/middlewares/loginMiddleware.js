@@ -1,8 +1,10 @@
 const { Router } = require("express");
 const jwt = require("jsonwebtoken");
 const UserController = require("../controllers/userController");
+const { transporter } = require("../controllers/mailer");
 
 const secret = process.env.SECRET;
+const secretReset = process.env.SECRET_RESET;
 const router = Router();
 
 router.post("/", async (req, res, next) => {
@@ -43,8 +45,65 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.get("/public", (req, res) => {
-  return res.status(200).json({ message: "You have access" });
+router.put("/change-password", async (req, res) => {
+  const { user } = req.body;
+  if (!user) {
+    return res.status(400).json({ error: "Email is required" });
+  }
+  const message = "Te enviamos un link a tu correo electronico";
+  let verificationToken;
+  let emailStatus = "ok";
+
+  try {
+    const userP = await UserController.findUser(user);
+    const { id, email } = userP;
+    const token = jwt.sign({ id, email }, secretReset, { expiresIn: "10m" });
+    verificationToken = token;
+    await UserController.setUserResetToken(id, token);
+  } catch (error) {
+    emailStatus = error;
+    return res.status(401).json({ error: "user not found" });
+  }
+
+  //TODO: sendEmail
+  try {
+    await transporter.sendMail({
+      from: '"Forgot password" <framqoo@gmail.com>',
+      to: user,
+      subject: "Forgot password",
+      html: `<b>Ingrese el siguiente token para recuperar su contraseña ${verificationToken}</b>`,
+    });
+  } catch (error) {
+    emailStatus = error;
+    return res.status(400).json({ error: error.message });
+  }
+
+  res.status(200).json({ message, info: emailStatus });
+});
+
+router.put("/new-password", async (req, res) => {
+  const { newPassword } = req.body;
+  const resetToken = req.headers.reset;
+
+  if (!(resetToken && newPassword)) {
+    res.status(400).json({ error: "all fields are required" });
+  }
+
+  let jwtPayload;
+  
+
+  try {
+    jwtPayload = jwt.verify(resetToken, secretReset);
+    // if (Date.now() > jwtPayload.exp) {
+    //   return res.status(401).send({ error: "token expired" });
+    // }
+    console.log(jwtPayload.exp);
+    console.log(Date.now());
+    await UserController.setNewUserPassword(resetToken, newPassword);
+  } catch (error) {
+    return res.status(401).json({ error: error.message });
+  }
+  res.json({ message: "password changed" });
 });
 
 router.get("/private", (req, res) => {

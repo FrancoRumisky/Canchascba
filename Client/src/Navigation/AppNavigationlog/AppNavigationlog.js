@@ -5,6 +5,7 @@ import SplashScreen from "../../Components/screens/SplashScreen"
 import Login from "../../Components/screens/Login"
 import AppNavigation from "../Appnavigation/Appnavigation"
 import { useSelector } from "react-redux";
+import ForgotPassword from "../../Components/screens/ForgotPassword";
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ export default function AppNavigationLog() {
       <Stack.Screen name="Splash" component={SplashScreen} />
       <Stack.Screen name="Login" component={Object.hasOwn(useAuth, "ok") ? AppNavigation : Login } />
       <Stack.Screen name="Home" component={AppNavigation} />
+      <Stack.Screen name="ForgotPass" component={ForgotPassword} />
     </Stack.Navigator>
   );
 }

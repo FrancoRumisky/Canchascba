@@ -32,6 +32,18 @@ export function login(data) {
   }
 }
 
+export function forgotPassword(user){
+  return  function (dispatch) {
+     fetch(server + `/login/change-password`, {
+      method: 'PUT', 
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user) 
+    }).then((req)=> req.json()).then((res)=> dispatch({type:USER_AUTH, payload:res}))
+  }
+}
+
 export function getUsers(id) {
   if (id) {
     return function (dispatch) {

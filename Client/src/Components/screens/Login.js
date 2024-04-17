@@ -90,7 +90,12 @@ const Login = ({ navigation }) => {
           onPress={handlePressLogin}
           style={{ margin: 16 }}
         />
-        <Text style={style.text1}>Olvide mi contraseña</Text>
+        <Text
+          onPress={() => navigation.navigate("ForgotPass")}
+          style={style.text1}
+        >
+          Olvide mi contraseña
+        </Text>
         <Text style={style.text2}>Aun no tiene cuenta?</Text>
         <Button
           color={Colors.red}
