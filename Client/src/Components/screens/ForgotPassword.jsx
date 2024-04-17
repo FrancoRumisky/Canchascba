@@ -14,13 +14,13 @@ const ForgotPassword = () => {
   const [loading, setLoading] = React.useState(false);
   const [data, setData] = React.useState("");
 
-  const useAuth = useSelector((state) => state.userAuth);
+  const userAuth = useSelector((state) => state.userAuth);
 
   const handlePress = () => {
     navigation.navigate("Home");
   };
 
-  console.log(useAuth)
+  console.log(userAuth)
 
   const handlePressLogin = () => {
     dispatch(forgotPassword(data));
@@ -28,8 +28,8 @@ const ForgotPassword = () => {
   };
 
   React.useEffect(() => {
-    if (useAuth.info) setLoading(false);
-  }, [useAuth, isFocused]);
+    if (userAuth.info) setLoading(false);
+  }, [userAuth, isFocused]);
 
   return (
     <View style={styles.container}>
@@ -50,7 +50,7 @@ const ForgotPassword = () => {
           }}
           source={require("../../../assets/Logo.png")}
         />
-        {useAuth.info ? (
+        {userAuth.info ? (
           <Button
             olor={Colors.red}
             title="prueba"
@@ -68,7 +68,7 @@ const ForgotPassword = () => {
               style={{ margin: 16 }}
             />
 
-            {useAuth.message ? <Text> {useAuth.error} </Text> : ""}
+            {userAuth.message ? <Text> {userAuth.error} </Text> : ""}
             <Button
               color={Colors.red}
               title="Recuperar contraseña"

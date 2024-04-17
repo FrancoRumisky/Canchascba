@@ -17,7 +17,7 @@ import {
 
 import { BACKEND_SERVER } from "@env";
 
-const server = BACKEND_SERVER || "https://canchascba-dev-brdn.2.us-1.fl0.io";
+const server = BACKEND_SERVER || "https://canchascba-dev-etpm.1.us-1.fl0.io/";
 
 
 export function login(data) {
