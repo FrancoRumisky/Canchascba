@@ -13,6 +13,7 @@ import {
   SET_DATE,
   GET_IDSPORT,
   USER_AUTH,
+  PASS_STATUS
 } from "../constants";
 
 import { BACKEND_SERVER } from "@env";
@@ -34,7 +35,6 @@ export function login(data) {
 }
 
 export function forgotPassword(data) {
-  console.log(data);
   return function (dispatch) {
     fetch(server + `/login/change-password`, {
       method: "PUT",
@@ -43,7 +43,23 @@ export function forgotPassword(data) {
       },
       body: JSON.stringify(data),
     })
-      .then((req) => req.json()).then((res)=>console.log(res))
+      .then((res) => res.json())
+      .then((res) => dispatch({ type: PASS_STATUS, payload: res }));
+  };
+}
+
+export function chagePassword({newPassword,token}) {
+  return function (dispatch) {
+    fetch(server + `/login/new-password`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        reset: JSON.stringify(token)
+      },
+      body: JSON.stringify(newPassword),
+    })
+      .then((res) => res.json())
+      .then((res) => dispatch({ type: PASS_STATUS, payload: res }));
   };
 }
 

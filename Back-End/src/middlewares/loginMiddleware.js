@@ -86,7 +86,7 @@ router.put("/new-password", async (req, res) => {
   const resetToken = req.headers.reset;
 
   if (!(resetToken && newPassword)) {
-    res.status(400).json({ message: "all fields are required" });
+    res.status(400).json({ error: "all fields are required" });
   }
 
   let jwtPayload;
@@ -97,13 +97,13 @@ router.put("/new-password", async (req, res) => {
     // if (Date.now() > jwtPayload.exp) {
     //   return res.status(401).send({ error: "token expired" });
     // }
-    console.log(jwtPayload.exp);
+    console.log(jwtPayload);
     console.log(Date.now());
     await UserController.setNewUserPassword(resetToken, newPassword);
   } catch (error) {
-    return res.status(401).json({ message: error.message });
+    return res.status(401).json({ error: error.message });
   }
-  res.json({ message: "password changed" });
+  res.json({ success: "password changed" });
 });
 
 router.get("/private", (req, res) => {

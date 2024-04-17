@@ -6,21 +6,16 @@ import { Colors } from "../Styles/Colors";
 import { styles } from "../Styles/General";
 import { forgotPassword } from "../../redux/actions";
 import { useIsFocused } from "@react-navigation/native";
+import ChangePassword from "./ChangePassword";
 
 const ForgotPassword = () => {
   const dispatch = useDispatch();
   const isFocused = useIsFocused();
 
   const [loading, setLoading] = React.useState(false);
-  const [data, setData] = React.useState({user:" "});
+  const [data, setData] = React.useState({ user: "" });
 
-  const userAuth = useSelector((state) => state.userAuth);
-
-  const handlePress = () => {
-    navigation.navigate("Home");
-  };
-
-  console.log(userAuth)
+  const statuPass = useSelector((state) => state.statusPass);
 
   const handlePressLogin = () => {
     dispatch(forgotPassword(data));
@@ -28,8 +23,9 @@ const ForgotPassword = () => {
   };
 
   React.useEffect(() => {
-    if (userAuth.info) setLoading(false);
-  }, [userAuth, isFocused]);
+    console.log(statuPass);
+    if (!Object.hasOwn(statuPass, "message")) setLoading(false);
+  }, [statuPass, isFocused]);
 
   return (
     <View style={styles.container}>
@@ -50,25 +46,20 @@ const ForgotPassword = () => {
           }}
           source={require("../../../assets/Logo.png")}
         />
-        {userAuth.info ? (
-          <Button
-            olor={Colors.red}
-            title="prueba"
-            onPress={handlePressLogin}
-            style={{ margin: 16 }}
+        {statuPass?.info ? (
+          <ChangePassword
           />
         ) : (
           <View>
             <TextInput
               color={Colors.black}
               value={data.user}
-              onChangeText={(text) => setData({user:text})}
+              onChangeText={(text) => setData({ user: text })}
               variant="outlined"
               label="Email"
               style={{ margin: 16 }}
             />
-
-            {userAuth.message ? <Text> {userAuth.error} </Text> : ""}
+            {statuPass?.message ? <Text> {statuPass?.message} </Text> : ""}
             <Button
               color={Colors.red}
               title="Recuperar contraseña"
