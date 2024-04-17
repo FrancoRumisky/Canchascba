@@ -12,7 +12,7 @@ const ForgotPassword = () => {
   const isFocused = useIsFocused();
 
   const [loading, setLoading] = React.useState(false);
-  const [data, setData] = React.useState("");
+  const [data, setData] = React.useState({user:" "});
 
   const userAuth = useSelector((state) => state.userAuth);
 
@@ -61,8 +61,8 @@ const ForgotPassword = () => {
           <View>
             <TextInput
               color={Colors.black}
-              value={data}
-              onChangeText={(text) => setData(text)}
+              value={data.user}
+              onChangeText={(text) => setData({user:text})}
               variant="outlined"
               label="Email"
               style={{ margin: 16 }}

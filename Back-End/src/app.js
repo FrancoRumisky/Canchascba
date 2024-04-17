@@ -18,7 +18,7 @@ server.use(
   cors({
     origin: [
       "exp://192.168.100.2:8081",
-      "https://ep-late-union-25999705.us-east-2.aws.neon.fl0.io/",
+      "https://canchascba-dev-etpm.1.us-1.fl0.io",
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: [

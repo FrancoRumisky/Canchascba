@@ -12,36 +12,39 @@ import {
   FILTER_BY_SERVICES,
   SET_DATE,
   GET_IDSPORT,
-  USER_AUTH
+  USER_AUTH,
 } from "../constants";
 
 import { BACKEND_SERVER } from "@env";
 
-const server = BACKEND_SERVER || "https://canchascba-dev-etpm.1.us-1.fl0.io/";
-
+const server = BACKEND_SERVER || "https://canchascba-dev-etpm.1.us-1.fl0.io";
 
 export function login(data) {
-  return  function (dispatch) {
-     fetch(server + `/login`, {
-      method: 'POST', 
+  return function (dispatch) {
+    fetch(server + `/login`, {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(data) 
-    }).then((req)=> req.json()).then((res)=> dispatch({type:USER_AUTH, payload:res}))
-  }
+      body: JSON.stringify(data),
+    })
+      .then((req) => req.json())
+      .then((res) => dispatch({ type: USER_AUTH, payload: res }));
+  };
 }
 
-export function forgotPassword(user){
-  return  function (dispatch) {
-     fetch(server + `/login/change-password`, {
-      method: 'PUT', 
+export function forgotPassword(data) {
+  console.log(data);
+  return function (dispatch) {
+    fetch(server + `/login/change-password`, {
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(user) 
-    }).then((req)=> req.json()).then((res)=> dispatch({type:USER_AUTH, payload:res}))
-  }
+      body: JSON.stringify(data),
+    })
+      .then((req) => req.json()).then((res)=>console.log(res))
+  };
 }
 
 export function getUsers(id) {
@@ -80,17 +83,17 @@ export function getSports() {
   return function (dispatch) {
     dispatch(loading());
     fetch(server + `/deportes/`)
-    .then((res) => res.json())
-    .then((res) => {
-      dispatch({ type: GET_SPORTS, payload: res });
-    });
+      .then((res) => res.json())
+      .then((res) => {
+        dispatch({ type: GET_SPORTS, payload: res });
+      });
   };
 }
 
-export function getCompanies(){
-  return function (dispatch){
+export function getCompanies() {
+  return function (dispatch) {
     fetch(server + `/empresas`)
-    .then((res) => res.json())
+      .then((res) => res.json())
       .then((res) => {
         dispatch({ type: GET_COMPANIES, payload: res });
       });
@@ -118,9 +121,18 @@ export function getCompanieById(id) {
   };
 }
 
-export function getFieldsByCompanyAndSport(idcompany, idsport, fecha, horaInicio, horaFin) {
+export function getFieldsByCompanyAndSport(
+  idcompany,
+  idsport,
+  fecha,
+  horaInicio,
+  horaFin
+) {
   return function (dispatch) {
-    fetch(server + `/canchas?idcompany=${idcompany}&idsport=${idsport}&fecha=${fecha}&horaInicio=${horaInicio}&horaFin=${horaFin}`)
+    fetch(
+      server +
+        `/canchas?idcompany=${idcompany}&idsport=${idsport}&fecha=${fecha}&horaInicio=${horaInicio}&horaFin=${horaFin}`
+    )
       .then((res) => res.json())
       .then((res) => {
         dispatch({ type: GET_FIELDSBYCS, payload: res });
@@ -140,25 +152,25 @@ export function getLocation() {
 
 export function setFilters(props) {
   return function (dispatch) {
-    dispatch({type: FILTER_BY_LOCATION, payload: props});
+    dispatch({ type: FILTER_BY_LOCATION, payload: props });
   };
 }
 
 export function servicesFilters(props) {
   return function (dispatch) {
-    dispatch({type: FILTER_BY_SERVICES, payload: props});
+    dispatch({ type: FILTER_BY_SERVICES, payload: props });
   };
 }
 
 export function setDate(props) {
   return function (dispatch) {
-    dispatch({type: SET_DATE, payload: props});
+    dispatch({ type: SET_DATE, payload: props });
   };
 }
 
 export function getIdSport(id) {
   return function (dispatch) {
-    dispatch({type: GET_IDSPORT, payload: id});
+    dispatch({ type: GET_IDSPORT, payload: id });
   };
 }
 
