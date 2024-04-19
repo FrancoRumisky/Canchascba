@@ -83,7 +83,7 @@ router.put("/change-password", async (req, res) => {
 
 router.put("/new-password", async (req, res) => {
   const { newPassword } = req.body;
-  const resetToken = req.headers.reset;
+  const resetToken = req.headers.authorization.split(" ")[1];
 
   if (!(resetToken && newPassword)) {
     res.status(400).json({ error: "all fields are required" });

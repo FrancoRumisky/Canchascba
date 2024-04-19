@@ -81,7 +81,7 @@ const Login = ({ navigation }) => {
             />
           )}
         />
-        {useAuth.error ? <Text> {useAuth.error} </Text> : ""}
+        {useAuth.error ? <Text style={styles.textError}> {useAuth.error} </Text> : ""}
         <Button
           color={Colors.red}
           title="Ingresar"

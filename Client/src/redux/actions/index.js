@@ -13,7 +13,7 @@ import {
   SET_DATE,
   GET_IDSPORT,
   USER_AUTH,
-  PASS_STATUS
+  PASS_STATUS,
 } from "../constants";
 
 import { BACKEND_SERVER } from "@env";
@@ -52,13 +52,11 @@ export function chagePassword({newPassword,token}) {
   return function (dispatch) {
     fetch(server + `/login/new-password`, {
       method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        reset: JSON.stringify(token)
-      },
+      headers: {Authorization: `Bearer ${token}`},
       body: JSON.stringify(newPassword),
     })
       .then((res) => res.json())
+      // .then((res) => console.log(res))
       .then((res) => dispatch({ type: PASS_STATUS, payload: res }));
   };
 }

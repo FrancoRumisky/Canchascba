@@ -8,6 +8,10 @@ const styles = StyleSheet.create({
     fontFamily: "MATURASC",
     backgroundColor: Colors.black,
   },
+  textError:{
+    color:"red",
+    marginLeft:16
+  }
 });
 
 const imageBackground = StyleSheet.create({

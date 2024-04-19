@@ -13,6 +13,7 @@ const ForgotPassword = () => {
   const isFocused = useIsFocused();
 
   const [loading, setLoading] = React.useState(false);
+
   const [data, setData] = React.useState({ user: "" });
 
   const statuPass = useSelector((state) => state.statusPass);
@@ -24,7 +25,7 @@ const ForgotPassword = () => {
 
   React.useEffect(() => {
     console.log(statuPass);
-    if (!Object.hasOwn(statuPass, "message")) setLoading(false);
+    if (Object.hasOwn(statuPass, "message")) setLoading(false);
   }, [statuPass, isFocused]);
 
   return (
@@ -47,8 +48,7 @@ const ForgotPassword = () => {
           source={require("../../../assets/Logo.png")}
         />
         {statuPass?.info ? (
-          <ChangePassword
-          />
+          <ChangePassword />
         ) : (
           <View>
             <TextInput
@@ -56,10 +56,10 @@ const ForgotPassword = () => {
               value={data.user}
               onChangeText={(text) => setData({ user: text })}
               variant="outlined"
-              label="Email"
+              label="Ingrese su email"
               style={{ margin: 16 }}
             />
-            {statuPass?.message ? <Text> {statuPass?.message} </Text> : ""}
+            {statuPass?.message ? <Text style={styles.textError}> {statuPass?.message} </Text> : ""}
             <Button
               color={Colors.red}
               title="Recuperar contraseña"

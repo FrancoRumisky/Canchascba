@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, ImageBackground, Image } from "react-native";
+import { View, Text, StyleSheet, ImageBackground, Image, Alert } from "react-native";
 import { Button, TextInput, IconButton } from "@react-native-material/core";
 import { Colors } from "../Styles/Colors";
 import { useIsFocused } from "@react-navigation/native";
@@ -11,11 +11,18 @@ const ChangePassword = ({ navigation }) => {
   const isFocused = useIsFocused();
   const [loading, setLoading] = React.useState(false);
   const [data, setData] = React.useState({ newPassword: "", token: "" });
-  const statuPass = useSelector((state) => state.statusPass);
+  const statusPass = useSelector((state) => state.statusPass);
 
   const handlePress = () => {
     navigation.navigate("Home");
   };
+
+  const createAlert = () =>
+    Alert.alert('Atencion!', 'Te enviamos el token a tu casilla de correo electronico!', [
+      {text: 'OK'},
+    ]);
+
+    console.log(data)
 
   const handlePressLogin = () => {
     dispatch(chagePassword(data));
@@ -23,11 +30,15 @@ const ChangePassword = ({ navigation }) => {
   };
 
   React.useEffect(() => {
-    if (Object.hasOwn(statuPass, "error")) setLoading(false);
-  }, [isFocused, statuPass]);
+    if (Object.hasOwn(statusPass, "error")) setLoading(false);
+  }, [isFocused, statusPass]);
+
+  React.useEffect(() => {
+    createAlert()
+  },[]);
 
   return (
-    <View>
+    <>
       <TextInput
         color={Colors.black}
         value={data.newPassword}
@@ -44,7 +55,7 @@ const ChangePassword = ({ navigation }) => {
         label="Token"
         style={{ margin: 16 }}
       />
-      {statuPass?.error ? <Text> {statuPass?.error} </Text> : ""}
+      {statusPass?.error ? <Text style={styles.textError}> {statusPass?.error} </Text> : ""}
       <Button
         color={Colors.red}
         title="Cambiar contraseña"
@@ -53,7 +64,7 @@ const ChangePassword = ({ navigation }) => {
         onPress={handlePressLogin}
         style={{ margin: 16 }}
       />
-    </View>
+    </>
   );
 };
 
