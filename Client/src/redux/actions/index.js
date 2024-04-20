@@ -14,6 +14,7 @@ import {
   GET_IDSPORT,
   USER_AUTH,
   PASS_STATUS,
+  CHANGE_PASS
 } from "../constants";
 
 import { BACKEND_SERVER } from "@env";
@@ -48,16 +49,21 @@ export function forgotPassword(data) {
   };
 }
 
-export function chagePassword({newPassword,token}) {
+export function chagePassword({ newPassword, token }) {
+  console.log(newPassword, token);
   return function (dispatch) {
     fetch(server + `/login/new-password`, {
       method: "PUT",
-      headers: {Authorization: `Bearer ${token}`},
-      body: JSON.stringify(newPassword),
+
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+        mode: 'no-cors',
+      },
+      body: JSON.stringify({ newPassword: newPassword }),
     })
       .then((res) => res.json())
-      // .then((res) => console.log(res))
-      .then((res) => dispatch({ type: PASS_STATUS, payload: res }));
+      .then((res) => dispatch({ type: CHANGE_PASS, payload: res }));
   };
 }
 

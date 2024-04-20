@@ -86,7 +86,7 @@ router.put("/new-password", async (req, res) => {
   const resetToken = req.headers.authorization.split(" ")[1];
 
   if (!(resetToken && newPassword)) {
-    res.status(400).json({ error: "all fields are required" });
+    return res.status(400).json({ error: "all fields are required" });
   }
 
   let jwtPayload;
@@ -103,7 +103,7 @@ router.put("/new-password", async (req, res) => {
   } catch (error) {
     return res.status(401).json({ error: error.message });
   }
-  res.json({ success: "password changed" });
+  res.status(200).json({ success: "password changed" });
 });
 
 router.get("/private", (req, res) => {

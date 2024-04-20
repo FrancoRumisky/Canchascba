@@ -8,7 +8,7 @@ import { forgotPassword } from "../../redux/actions";
 import { useIsFocused } from "@react-navigation/native";
 import ChangePassword from "./ChangePassword";
 
-const ForgotPassword = () => {
+const ForgotPassword = ({ navigation }) => {
   const dispatch = useDispatch();
   const isFocused = useIsFocused();
 
@@ -26,7 +26,14 @@ const ForgotPassword = () => {
   React.useEffect(() => {
     console.log(statuPass);
     if (Object.hasOwn(statuPass, "message")) setLoading(false);
+    return () => {
+      dispatch(forgotPassword(data));
+    };
   }, [statuPass, isFocused]);
+
+  // React.useEffect(() => {
+  //   dispatch(forgotPassword(data));
+  // }, [isFocused]);
 
   return (
     <View style={styles.container}>
@@ -48,7 +55,7 @@ const ForgotPassword = () => {
           source={require("../../../assets/Logo.png")}
         />
         {statuPass?.info ? (
-          <ChangePassword />
+          <ChangePassword navigation={navigation} />
         ) : (
           <View>
             <TextInput
@@ -59,7 +66,11 @@ const ForgotPassword = () => {
               label="Ingrese su email"
               style={{ margin: 16 }}
             />
-            {statuPass?.message ? <Text style={styles.textError}> {statuPass?.message} </Text> : ""}
+            {statuPass?.message ? (
+              <Text style={styles.textError}> {statuPass?.message} </Text>
+            ) : (
+              ""
+            )}
             <Button
               color={Colors.red}
               title="Recuperar contraseña"

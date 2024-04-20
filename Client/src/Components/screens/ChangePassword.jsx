@@ -1,7 +1,15 @@
 import React from "react";
-import { View, Text, StyleSheet, ImageBackground, Image, Alert } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ImageBackground,
+  Image,
+  Alert,
+} from "react-native";
 import { Button, TextInput, IconButton } from "@react-native-material/core";
 import { Colors } from "../Styles/Colors";
+import { styles } from "../Styles/General";
 import { useIsFocused } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { chagePassword } from "../../redux/actions";
@@ -11,18 +19,23 @@ const ChangePassword = ({ navigation }) => {
   const isFocused = useIsFocused();
   const [loading, setLoading] = React.useState(false);
   const [data, setData] = React.useState({ newPassword: "", token: "" });
-  const statusPass = useSelector((state) => state.statusPass);
+  const changePass = useSelector((state) => state.changePass);
 
-  const handlePress = () => {
-    navigation.navigate("Home");
-  };
+  // const handlePress = () => {
+  //   navigation.navigate("Login");
+  // };
 
-  const createAlert = () =>
-    Alert.alert('Atencion!', 'Te enviamos el token a tu casilla de correo electronico!', [
-      {text: 'OK'},
+  const AlertSendEmail = () =>
+    Alert.alert(
+      "Atencion!",
+      "Te enviamos el token a tu casilla de correo electronico!",
+      [{ text: "OK" }]
+    );
+
+  const AlertPassChange = () =>
+    Alert.alert("Exito", "Su contraseña ha sido Cambiada", [
+      { text: "Ir a logearme", onPress: () => navigation.navigate("Login") },
     ]);
-
-    console.log(data)
 
   const handlePressLogin = () => {
     dispatch(chagePassword(data));
@@ -30,12 +43,16 @@ const ChangePassword = ({ navigation }) => {
   };
 
   React.useEffect(() => {
-    if (Object.hasOwn(statusPass, "error")) setLoading(false);
-  }, [isFocused, statusPass]);
+    if (Object.hasOwn(changePass, "error")) setLoading(false);
+    if (Object.hasOwn(changePass, "success")) AlertPassChange();
+  }, [isFocused, changePass]);
 
   React.useEffect(() => {
-    createAlert()
-  },[]);
+    AlertSendEmail();
+    return () => {
+      dispatch(chagePassword(data));
+    };
+  }, []);
 
   return (
     <>
@@ -55,7 +72,11 @@ const ChangePassword = ({ navigation }) => {
         label="Token"
         style={{ margin: 16 }}
       />
-      {statusPass?.error ? <Text style={styles.textError}> {statusPass?.error} </Text> : ""}
+      {changePass?.error ? (
+        <Text style={styles.textError}> {changePass?.error} </Text>
+      ) : (
+        ""
+      )}
       <Button
         color={Colors.red}
         title="Cambiar contraseña"

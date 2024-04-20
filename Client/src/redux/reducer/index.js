@@ -13,12 +13,14 @@ import {
   FILTER_BY_SERVICES,
   SET_DATE,
   USER_AUTH,
-  PASS_STATUS
+  PASS_STATUS,
+  CHANGE_PASS
 } from "../constants";
 
 const initialState = {
   userAuth : {},
   statusPass: {},
+  changePass:{},
   allusers: [],
   user: {},
   allSports: [],
@@ -46,6 +48,11 @@ const reducer = (state = initialState, action) => {
       ...state,
       statusPass:action.payload
     };
+    case CHANGE_PASS:
+      return {
+        ...state,
+        changePass:action.payload
+      }
     case GET_USERS:
       return {
         ...state,

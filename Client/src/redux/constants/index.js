@@ -13,3 +13,4 @@ export const FILTER_BY_SERVICES = "FILTER_BY_SERVICES";
 export const GET_IDSPORT = "GET_IDSPORT";
 export const USER_AUTH = "USER_AUTH";
 export const PASS_STATUS = "PASS_STATUS";
+export const CHANGE_PASS = "CHANGE_PASS";
